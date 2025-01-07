@@ -3,22 +3,22 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <div id="home" className="pt-24 pb-16 bg-gradient-to-br from-primary/5 to-secondary/5">
+    <div id="home" className="pt-24 pb-16 bg-gradient-to-br from-white to-secondary/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-              <span className="block">Connecting Skilled</span>
-              <span className="block text-primary">Talent with German</span>
-              <span className="block text-secondary">Opportunities</span>
+              <span className="block">Your Gateway to</span>
+              <span className="block text-primary">Nursing Careers</span>
+              <span className="block text-secondary">in Germany</span>
             </h1>
             <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              We bridge the gap between international skilled workers and German organizations, 
-              creating meaningful career opportunities and addressing workforce shortages.
+              We specialize in connecting international nursing professionals with German healthcare institutions. 
+              From mini-jobs to full-time positions, we help you build your career in Germany's healthcare sector.
             </p>
             <div className="mt-8 sm:max-w-lg sm:mx-auto lg:mx-0">
               <Button className="w-full sm:w-auto bg-primary text-white hover:bg-primary/90">
-                Find Your Opportunity <ArrowRight className="ml-2" size={16} />
+                Start Your Journey <ArrowRight className="ml-2" size={16} />
               </Button>
             </div>
           </div>
@@ -27,7 +27,7 @@ const Hero = () => {
               <img
                 className="w-full rounded-lg"
                 src="/placeholder.svg"
-                alt="Team collaboration"
+                alt="Nursing professionals"
               />
             </div>
           </div>

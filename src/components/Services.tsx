@@ -1,4 +1,4 @@
-import { Briefcase, UserCheck, Building, FileCheck } from "lucide-react";
+import { Briefcase, UserCheck, Building, FileCheck, Stethoscope, GraduationCap, Globe, Clock } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Services = () => {
@@ -10,7 +10,7 @@ const Services = () => {
             Our Services
           </h2>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Comprehensive recruitment solutions for both job seekers and organizations
+            Comprehensive support for nursing professionals seeking opportunities in Germany
           </p>
         </div>
 
@@ -18,26 +18,26 @@ const Services = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
-                <Briefcase className="h-6 w-6 text-primary mr-2" />
-                For Job Seekers
+                <Stethoscope className="h-6 w-6 text-secondary mr-2" />
+                For Nursing Professionals
               </CardTitle>
               <CardDescription>
-                Find your dream job in Germany
+                Your path to a nursing career in Germany
               </CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
                 <li className="flex items-center">
-                  <UserCheck className="h-5 w-5 text-secondary mr-2" />
-                  Professional CV review and optimization
+                  <GraduationCap className="h-5 w-5 text-secondary mr-2" />
+                  Qualification recognition support
                 </li>
                 <li className="flex items-center">
-                  <FileCheck className="h-5 w-5 text-secondary mr-2" />
-                  Document verification assistance
+                  <Globe className="h-5 w-5 text-secondary mr-2" />
+                  German language courses
                 </li>
                 <li className="flex items-center">
-                  <Building className="h-5 w-5 text-secondary mr-2" />
-                  Direct placement with top employers
+                  <Clock className="h-5 w-5 text-secondary mr-2" />
+                  Flexible mini-job opportunities
                 </li>
               </ul>
             </CardContent>
@@ -46,26 +46,26 @@ const Services = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
-                <Building className="h-6 w-6 text-primary mr-2" />
-                For Organizations
+                <Building className="h-6 w-6 text-secondary mr-2" />
+                For Healthcare Institutions
               </CardTitle>
               <CardDescription>
-                Find skilled professionals for your team
+                Access qualified nursing professionals
               </CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <UserCheck className="h-5 w-5 text-secondary mr-2" />
-                  Access to pre-screened candidates
+                  Pre-screened candidates
                 </li>
                 <li className="flex items-center">
                   <FileCheck className="h-5 w-5 text-secondary mr-2" />
-                  Compliance and documentation support
+                  Visa and documentation support
                 </li>
                 <li className="flex items-center">
                   <Briefcase className="h-5 w-5 text-secondary mr-2" />
-                  Tailored recruitment solutions
+                  Mini-job and full-time placement
                 </li>
               </ul>
             </CardContent>
