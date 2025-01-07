@@ -13,7 +13,7 @@ const Hero = () => {
               <span className="block text-secondary">in Germany</span>
             </h1>
             <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              We specialize in connecting international nursing professionals with German healthcare institutions. 
+              We specialize in connecting domestic and international nursing professionals with German healthcare institutions. 
               From mini-jobs to full-time positions, we help you build your career in Germany's healthcare sector.
             </p>
             <div className="mt-8 sm:max-w-lg sm:mx-auto lg:mx-0">

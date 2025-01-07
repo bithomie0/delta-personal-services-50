@@ -28,8 +28,8 @@ const About = () => {
               <div className="text-lg font-medium text-gray-900">Our Mission</div>
               <p className="mt-4 text-gray-500">
                 We're committed to addressing Germany's skilled worker shortage while creating 
-                life-changing opportunities for international professionals seeking to build 
-                their careers in Germany.
+                life-changing opportunities for both domestic and international nursing professionals 
+                seeking to build their careers in Germany.
               </p>
             </div>
           </div>
