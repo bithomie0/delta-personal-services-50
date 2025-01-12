@@ -1,4 +1,4 @@
-import { Briefcase, UserCheck, Building, FileCheck, Stethoscope, GraduationCap, Globe, Clock } from "lucide-react";
+import { Briefcase, UserCheck, Building, FileCheck, Stethoscope, GraduationCap, Globe, Clock, Home, Network, Book } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Services = () => {
@@ -30,6 +30,10 @@ const Services = () => {
                 <li className="flex items-center">
                   <GraduationCap className="h-5 w-5 text-secondary mr-2" />
                   Qualification recognition support
+                </li>
+                <li className="flex items-center">
+                  <FileCheck className="h-5 w-5 text-secondary mr-2" />
+                  Visa Application Support
                 </li>
                 <li className="flex items-center">
                   <Globe className="h-5 w-5 text-secondary mr-2" />
@@ -66,6 +70,46 @@ const Services = () => {
                 <li className="flex items-center">
                   <Briefcase className="h-5 w-5 text-secondary mr-2" />
                   Mini-job and full-time placement
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="md:col-span-2">
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <Globe className="h-6 w-6 text-secondary mr-2" />
+                Additional Services
+              </CardTitle>
+              <CardDescription>
+                Comprehensive support for your journey to Germany
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li className="flex items-center">
+                  <Book className="h-5 w-5 text-secondary mr-2" />
+                  German Language Course with qualified teachers
+                </li>
+                <li className="flex items-center">
+                  <GraduationCap className="h-5 w-5 text-secondary mr-2" />
+                  Early childhood education
+                </li>
+                <li className="flex items-center">
+                  <Briefcase className="h-5 w-5 text-secondary mr-2" />
+                  Vocational Training / Ausbildung Application
+                </li>
+                <li className="flex items-center">
+                  <Home className="h-5 w-5 text-secondary mr-2" />
+                  Accommodation and Settling in Support
+                </li>
+                <li className="flex items-center">
+                  <FileCheck className="h-5 w-5 text-secondary mr-2" />
+                  Visa application information & Support
+                </li>
+                <li className="flex items-center">
+                  <Network className="h-5 w-5 text-secondary mr-2" />
+                  Networking within and outside our community
                 </li>
               </ul>
             </CardContent>

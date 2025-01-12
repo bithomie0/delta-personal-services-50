@@ -9,7 +9,7 @@ const About = () => {
             About Delta Personal Services
           </h2>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Founded by two African-German professionals, we understand both sides of international recruitment.
+            Founded by two professionals, we understand both sides of international recruitment.
           </p>
         </div>
 
@@ -18,7 +18,7 @@ const About = () => {
             <div className="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm">
               <div className="text-lg font-medium text-gray-900">Our Story</div>
               <p className="mt-4 text-gray-500">
-                Founded by a nurse and a successful businesswoman, both African-Germans, 
+                Founded by a nurse and a successful businesswoman, 
                 Delta Personal Services combines healthcare expertise with business acumen 
                 to create perfect matches between skilled professionals and German organizations.
               </p>
