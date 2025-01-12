@@ -1,35 +1,34 @@
 import { Users, Award, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <div id="about" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            About Delta Personal Services
+            {t('about_title')}
           </h2>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Founded by two professionals, we understand both sides of international recruitment.
+            {t('about_subtitle')}
           </p>
         </div>
 
         <div className="mt-16">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm">
-              <div className="text-lg font-medium text-gray-900">Our Story</div>
+              <div className="text-lg font-medium text-gray-900">{t('our_story')}</div>
               <p className="mt-4 text-gray-500">
-                Founded by a nurse and a successful businesswoman, 
-                Delta Personal Services combines healthcare expertise with business acumen 
-                to create perfect matches between skilled professionals and German organizations.
+                {t('our_story_text')}
               </p>
             </div>
 
             <div className="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm">
-              <div className="text-lg font-medium text-gray-900">Our Mission</div>
+              <div className="text-lg font-medium text-gray-900">{t('our_mission')}</div>
               <p className="mt-4 text-gray-500">
-                We're committed to addressing Germany's skilled worker shortage while creating 
-                life-changing opportunities for both domestic and international nursing professionals 
-                seeking to build their careers in Germany.
+                {t('our_mission_text')}
               </p>
             </div>
           </div>
@@ -44,10 +43,10 @@ const About = () => {
                 </div>
                 <div className="ml-4">
                   <dt className="text-lg leading-6 font-medium text-gray-900">
-                    Expert Team
+                    {t('expert_team')}
                   </dt>
                   <dd className="mt-2 text-base text-gray-500">
-                    Led by professionals with firsthand experience in healthcare and business.
+                    {t('expert_team_desc')}
                   </dd>
                 </div>
               </div>
@@ -60,10 +59,10 @@ const About = () => {
                 </div>
                 <div className="ml-4">
                   <dt className="text-lg leading-6 font-medium text-gray-900">
-                    Global Network
+                    {t('global_network')}
                   </dt>
                   <dd className="mt-2 text-base text-gray-500">
-                    Connecting talent from around the world with German opportunities.
+                    {t('global_network_desc')}
                   </dd>
                 </div>
               </div>
@@ -76,10 +75,10 @@ const About = () => {
                 </div>
                 <div className="ml-4">
                   <dt className="text-lg leading-6 font-medium text-gray-900">
-                    Quality First
+                    {t('quality_first')}
                   </dt>
                   <dd className="mt-2 text-base text-gray-500">
-                    Ensuring perfect matches between professionals and organizations.
+                    {t('quality_first_desc')}
                   </dd>
                 </div>
               </div>

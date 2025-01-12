@@ -1,16 +1,19 @@
 import { Briefcase, UserCheck, Building, FileCheck, Stethoscope, GraduationCap, Globe, Clock, Home, Network, Book } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation();
+
   return (
     <div id="services" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Our Services
+            {t('services_title')}
           </h2>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            Comprehensive support for nursing professionals seeking opportunities in Germany
+            {t('services_subtitle')}
           </p>
         </div>
 
@@ -19,29 +22,29 @@ const Services = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Stethoscope className="h-6 w-6 text-secondary mr-2" />
-                For Nursing Professionals
+                {t('for_nurses')}
               </CardTitle>
               <CardDescription>
-                Your path to a nursing career in Germany
+                {t('for_nurses_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <GraduationCap className="h-5 w-5 text-secondary mr-2" />
-                  Qualification recognition support
+                  {t('qualification')}
                 </li>
                 <li className="flex items-center">
                   <FileCheck className="h-5 w-5 text-secondary mr-2" />
-                  Visa Application Support
+                  {t('visa_support')}
                 </li>
                 <li className="flex items-center">
                   <Globe className="h-5 w-5 text-secondary mr-2" />
-                  German language courses
+                  {t('language_courses')}
                 </li>
                 <li className="flex items-center">
                   <Clock className="h-5 w-5 text-secondary mr-2" />
-                  Flexible mini-job opportunities
+                  {t('flexible_jobs')}
                 </li>
               </ul>
             </CardContent>
@@ -51,25 +54,25 @@ const Services = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Building className="h-6 w-6 text-secondary mr-2" />
-                For Healthcare Institutions
+                {t('for_institutions')}
               </CardTitle>
               <CardDescription>
-                Access qualified nursing professionals
+                {t('for_institutions_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
                 <li className="flex items-center">
                   <UserCheck className="h-5 w-5 text-secondary mr-2" />
-                  Pre-screened candidates
+                  {t('prescreened')}
                 </li>
                 <li className="flex items-center">
                   <FileCheck className="h-5 w-5 text-secondary mr-2" />
-                  Visa and documentation support
+                  {t('visa_docs')}
                 </li>
                 <li className="flex items-center">
                   <Briefcase className="h-5 w-5 text-secondary mr-2" />
-                  Mini-job and full-time placement
+                  {t('placement')}
                 </li>
               </ul>
             </CardContent>
@@ -79,37 +82,37 @@ const Services = () => {
             <CardHeader>
               <CardTitle className="flex items-center">
                 <Globe className="h-6 w-6 text-secondary mr-2" />
-                Additional Services
+                {t('additional_services')}
               </CardTitle>
               <CardDescription>
-                Comprehensive support for your journey to Germany
+                {t('additional_desc')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <li className="flex items-center">
                   <Book className="h-5 w-5 text-secondary mr-2" />
-                  German Language Course with qualified teachers
+                  {t('german_course')}
                 </li>
                 <li className="flex items-center">
                   <GraduationCap className="h-5 w-5 text-secondary mr-2" />
-                  Early childhood education
+                  {t('childhood_edu')}
                 </li>
                 <li className="flex items-center">
                   <Briefcase className="h-5 w-5 text-secondary mr-2" />
-                  Vocational Training / Ausbildung Application
+                  {t('vocational')}
                 </li>
                 <li className="flex items-center">
                   <Home className="h-5 w-5 text-secondary mr-2" />
-                  Accommodation and Settling in Support
+                  {t('accommodation')}
                 </li>
                 <li className="flex items-center">
                   <FileCheck className="h-5 w-5 text-secondary mr-2" />
-                  Visa application information & Support
+                  {t('visa_info')}
                 </li>
                 <li className="flex items-center">
                   <Network className="h-5 w-5 text-secondary mr-2" />
-                  Networking within and outside our community
+                  {t('networking')}
                 </li>
               </ul>
             </CardContent>
