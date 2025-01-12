@@ -66,7 +66,13 @@ const resources = {
       "about": "About",
       "services": "Services",
       "contact": "Contact",
-      "get_started": "Get Started"
+      "get_started": "Get Started",
+
+      // Footer translations
+      "quick_links": "Quick Links",
+      "follow_us": "Follow Us",
+      "footer_description": "Connecting skilled professionals with German organizations for a brighter future.",
+      "copyright": "Delta Personal Services. All rights reserved.",
     }
   },
   de: {
@@ -133,7 +139,13 @@ const resources = {
       "about": "Über uns",
       "services": "Leistungen",
       "contact": "Kontakt",
-      "get_started": "Loslegen"
+      "get_started": "Loslegen",
+
+      // Footer translations
+      "quick_links": "Schnellzugriff",
+      "follow_us": "Folgen Sie uns",
+      "footer_description": "Wir verbinden qualifizierte Fachkräfte mit deutschen Organisationen für eine bessere Zukunft.",
+      "copyright": "Delta Personal Services. Alle Rechte vorbehalten.",
     }
   }
 };
