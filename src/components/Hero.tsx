@@ -11,15 +11,13 @@ const Hero = () => {
         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-              <span className="block">{t('hero_title')}</span>
-              <span className="block text-primary">{t('hero_subtitle')}</span>
+              <span className="block">{t('gateway')}</span>
+              <span className="block text-primary">{t('nursing_careers')}</span>
+              <span className="block text-secondary">{t('in_germany')}</span>
             </h1>
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              {t('hero_description')}
-            </p>
             <div className="mt-8 sm:max-w-lg sm:mx-auto lg:mx-0">
               <Button className="w-full sm:w-auto bg-primary text-white hover:bg-primary/90">
-                {t('hero_cta')} <ArrowRight className="ml-2" size={16} />
+                {t('start_journey')} <ArrowRight className="ml-2" size={16} />
               </Button>
             </div>
           </div>
