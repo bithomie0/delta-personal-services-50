@@ -14,7 +14,7 @@ const Hero = () => {
               <span className="block text-primary">{t('nursing_careers')}</span>
               <span className="block text-secondary">{t('in_germany')}</span>
             </h1>
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl font-extrabold">
+            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl font-medium">
               <span className="hidden">{t('hero_description')}</span>
               {t('bridge_to_meaningful_work')}
             </p>
