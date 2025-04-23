@@ -1,4 +1,5 @@
-import { Briefcase, UserCheck, Building, FileCheck, Stethoscope, GraduationCap, Globe, Clock, Home, Network, Book } from "lucide-react";
+
+import { Briefcase, UserCheck, Building, FileCheck, Stethoscope, GraduationCap, Globe, Clock, Home, Network, Book, Lightbulb } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 
@@ -93,6 +94,10 @@ const Services = () => {
                 <li className="flex items-center">
                   <Book className="h-5 w-5 text-secondary mr-2" />
                   {t('german_course')}
+                </li>
+                <li className="flex items-center">
+                  <Lightbulb className="h-5 w-5 text-secondary mr-2" />
+                  {t('nursing_ausbildung')}
                 </li>
                 <li className="flex items-center">
                   <GraduationCap className="h-5 w-5 text-secondary mr-2" />

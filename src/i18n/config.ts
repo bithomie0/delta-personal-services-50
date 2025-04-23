@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -77,6 +76,9 @@ const resources = {
       "follow_us": "Follow Us",
       "footer_description": "Building bridges to meaningful work by connecting qualified nursing professionals with German healthcare opportunities.",
       "copyright": "Delta Personal Services. All rights reserved.",
+      
+      // New translation
+      "nursing_ausbildung": "Nursing Vocational Training (Ausbildung)"
     }
   },
   de: {
@@ -153,6 +155,9 @@ const resources = {
       "follow_us": "Folgen Sie uns",
       "footer_description": "Wir bauen Brücken zu sinnvoller Arbeit, indem wir qualifizierte Pflegefachkräfte mit deutschen Gesundheitseinrichtungen verbinden.",
       "copyright": "Delta Personal Services. Alle Rechte vorbehalten.",
+      
+      // New translation
+      "nursing_ausbildung": "Pflegeausbildung"
     }
   }
 };

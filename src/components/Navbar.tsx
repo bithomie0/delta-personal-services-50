@@ -26,7 +26,6 @@ const Navbar = () => {
             <a href="#home" className="text-gray-700 hover:text-secondary">{t('home')}</a>
             <a href="#about" className="text-gray-700 hover:text-secondary">{t('about')}</a>
             <a href="#services" className="text-gray-700 hover:text-secondary">{t('services')}</a>
-            <a href="#" className="text-gray-700 hover:text-secondary">{t('study_nursing')}</a>
             <a href="#contact" className="text-gray-700 hover:text-secondary">{t('contact')}</a>
             <LanguageToggle />
             <Button className="bg-secondary text-primary hover:bg-secondary/90">{t('free_consultation')}</Button>
@@ -49,7 +48,6 @@ const Navbar = () => {
               <a href="#home" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('home')}</a>
               <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('about')}</a>
               <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('services')}</a>
-              <a href="#" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('study_nursing')}</a>
               <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('contact')}</a>
               <Button className="w-full bg-secondary text-primary hover:bg-secondary/90 mt-4">{t('free_consultation')}</Button>
             </div>
