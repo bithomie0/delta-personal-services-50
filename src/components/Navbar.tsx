@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,13 +22,14 @@ const Navbar = () => {
             <span className="ml-3 text-xl font-bold text-primary">Delta Personal Services</span>
           </div>
           
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <a href="#home" className="text-gray-700 hover:text-secondary">{t('home')}</a>
             <a href="#about" className="text-gray-700 hover:text-secondary">{t('about')}</a>
             <a href="#services" className="text-gray-700 hover:text-secondary">{t('services')}</a>
+            <a href="#" className="text-gray-700 hover:text-secondary">{t('study_nursing')}</a>
             <a href="#contact" className="text-gray-700 hover:text-secondary">{t('contact')}</a>
             <LanguageToggle />
-            <Button className="bg-secondary text-primary hover:bg-secondary/90">{t('get_started')}</Button>
+            <Button className="bg-secondary text-primary hover:bg-secondary/90">{t('free_consultation')}</Button>
           </div>
 
           <div className="md:hidden flex items-center space-x-4">
@@ -47,8 +49,9 @@ const Navbar = () => {
               <a href="#home" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('home')}</a>
               <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('about')}</a>
               <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('services')}</a>
+              <a href="#" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('study_nursing')}</a>
               <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('contact')}</a>
-              <Button className="w-full bg-secondary text-primary hover:bg-secondary/90 mt-4">{t('get_started')}</Button>
+              <Button className="w-full bg-secondary text-primary hover:bg-secondary/90 mt-4">{t('free_consultation')}</Button>
             </div>
           </div>
         )}

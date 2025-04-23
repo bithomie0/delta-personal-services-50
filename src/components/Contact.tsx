@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -43,7 +44,7 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-primary mt-1" />
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">{t('email')}</h3>
-                  <p className="mt-1 text-gray-500">contact@deltapersonalservices.de</p>
+                  <p className="mt-1 text-gray-500">info@deltapersonalservices.de</p>
                 </div>
               </div>
 
@@ -51,7 +52,7 @@ const Contact = () => {
                 <Phone className="h-6 w-6 text-primary mt-1" />
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">{t('phone')}</h3>
-                  <p className="mt-1 text-gray-500">+49 123 456 789</p>
+                  <p className="mt-1 text-gray-500">+49 176 60969006</p>
                 </div>
               </div>
 
@@ -60,9 +61,7 @@ const Contact = () => {
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">{t('address')}</h3>
                   <p className="mt-1 text-gray-500">
-                    Hauptstraße 123<br />
-                    10115 Berlin<br />
-                    Germany
+                    Berlin, Germany
                   </p>
                 </div>
               </div>
