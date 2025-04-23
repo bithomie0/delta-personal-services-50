@@ -30,8 +30,8 @@ const Hero = () => {
             <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
               <img
                 className="w-full rounded-lg"
-                src="/placeholder.svg"
-                alt="Nursing professionals"
+                src="/lovable-uploads/07938fde-7a20-45ba-8f51-8734b2ab49da.png"
+                alt="Nursing professionals in Germany"
               />
             </div>
           </div>
