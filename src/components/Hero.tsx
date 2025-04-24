@@ -25,7 +25,7 @@ const Hero = () => {
           </div>
           <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
             <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-              <img className="w-full rounded-lg" src="/lovable-uploads/07938fde-7a20-45ba-8f51-8734b2ab49da.png" alt="Nursing professionals in Germany" />
+              <img className="w-full rounded-lg" src="/lovable-uploads/95c852e5-5706-4ad4-bfad-efedb2a25e07.png" alt="Healthcare professional with heart symbol" />
             </div>
           </div>
         </div>
