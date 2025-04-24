@@ -1,15 +1,13 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
 const Contact = () => {
-  const { t } = useTranslation();
-
-  return (
-    <div id="contact" className="py-16 bg-white">
+  const {
+    t
+  } = useTranslation();
+  return <div id="contact" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -44,7 +42,7 @@ const Contact = () => {
                 <Mail className="h-6 w-6 text-primary mt-1" />
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">{t('email')}</h3>
-                  <p className="mt-1 text-gray-500">info@deltapersonalservices.de</p>
+                  <p className="mt-1 text-gray-500">info@deltapersonalservice.biz</p>
                 </div>
               </div>
 
@@ -69,8 +67,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
