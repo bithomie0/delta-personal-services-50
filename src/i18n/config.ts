@@ -78,7 +78,8 @@ const resources = {
       "copyright": "Delta Personal Services. All rights reserved.",
       
       // New translation
-      "nursing_ausbildung": "Nursing Vocational Training (Ausbildung)"
+      "nursing_ausbildung": "Nursing Vocational Training (Ausbildung)",
+      "connecting_professionals": "Connecting qualified nursing professionals with German healthcare opportunities."
     }
   },
   de: {
@@ -157,7 +158,8 @@ const resources = {
       "copyright": "Delta Personal Services. Alle Rechte vorbehalten.",
       
       // New translation
-      "nursing_ausbildung": "Pflegeausbildung"
+      "nursing_ausbildung": "Pflegeausbildung",
+      "connecting_professionals": "Verbindung qualifizierter Pflegefachkräfte mit deutschen Gesundheitseinrichtungen."
     }
   }
 };
