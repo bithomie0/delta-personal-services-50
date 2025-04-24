@@ -1,4 +1,3 @@
-
 import { Facebook, Twitter, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -26,9 +25,6 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#services" className="text-gray-400 hover:text-white">{t("services")}</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white">{t("study_nursing")}</a>
               </li>
               <li>
                 <a href="#contact" className="text-gray-400 hover:text-white">{t("contact")}</a>
