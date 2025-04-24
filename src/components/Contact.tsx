@@ -50,7 +50,7 @@ const Contact = () => {
                 <Phone className="h-6 w-6 text-primary mt-1" />
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">{t('phone')}</h3>
-                  <p className="mt-1 text-gray-500">+49 176 60969006</p>
+                  <p className="mt-1 text-gray-500">+49 176 60969006 | +49 15901187546</p>
                 </div>
               </div>
 
