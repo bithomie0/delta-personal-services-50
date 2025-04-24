@@ -58,9 +58,9 @@ const Contact = () => {
                 <MapPin className="h-6 w-6 text-primary mt-1" />
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">{t('address')}</h3>
-                  <p className="mt-1 text-gray-500">
-                    Berlin, Germany
-                  </p>
+                  <p className="mt-1 text-gray-500">Nourneystr. 5
+40822, Mettmann Germany
+                </p>
                 </div>
               </div>
             </div>
