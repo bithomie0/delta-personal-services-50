@@ -1,7 +1,6 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import LanguageToggle from "./LanguageToggle";
 
@@ -28,7 +27,6 @@ const Navbar = () => {
             <a href="#services" className="text-gray-700 hover:text-secondary">{t('services')}</a>
             <a href="#contact" className="text-gray-700 hover:text-secondary">{t('contact')}</a>
             <LanguageToggle />
-            <Button className="bg-secondary text-primary hover:bg-secondary/90">{t('free_consultation')}</Button>
           </div>
 
           <div className="md:hidden flex items-center space-x-4">
@@ -49,7 +47,6 @@ const Navbar = () => {
               <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('about')}</a>
               <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('services')}</a>
               <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('contact')}</a>
-              <Button className="w-full bg-secondary text-primary hover:bg-secondary/90 mt-4">{t('free_consultation')}</Button>
             </div>
           </div>
         )}

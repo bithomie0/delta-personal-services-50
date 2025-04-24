@@ -1,6 +1,4 @@
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const Hero = () => {
@@ -17,11 +15,6 @@ const Hero = () => {
             <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl font-medium">
               {t('connecting_professionals')}
             </p>
-            <div className="mt-8 sm:max-w-lg sm:mx-auto lg:mx-0">
-              <Button className="w-full sm:w-auto bg-primary text-white hover:bg-primary/90">
-                {t('free_consultation')} <ArrowRight className="ml-2" size={16} />
-              </Button>
-            </div>
           </div>
           <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
             <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
