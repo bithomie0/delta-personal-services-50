@@ -8,12 +8,21 @@ import { toast } from "@/hooks/use-toast";
 const Team = () => {
   const { t } = useTranslation();
   const [gladysImageError, setGladysImageError] = useState(false);
+  const [jacklineImageError, setJacklineImageError] = useState(false);
   
-  const handleImageError = () => {
+  const handleGladysImageError = () => {
     setGladysImageError(true);
     toast({
       title: "Image loading error",
-      description: "Profile image couldn't be loaded. Showing fallback.",
+      description: "Gladys's profile image couldn't be loaded. Showing fallback.",
+    });
+  };
+  
+  const handleJacklineImageError = () => {
+    setJacklineImageError(true);
+    toast({
+      title: "Image loading error",
+      description: "Jackline's profile image couldn't be loaded. Showing fallback.",
     });
   };
   
@@ -40,7 +49,7 @@ const Team = () => {
                         <AvatarImage 
                           src="/lovable-uploads/9128a173-b25e-4d17-a548-3b757e0b2fd4.png" 
                           alt="Gladys Lufen"
-                          onError={handleImageError}
+                          onError={handleGladysImageError}
                         />
                       ) : (
                         <AvatarImage 
@@ -68,7 +77,18 @@ const Team = () => {
                 <div className="sm:w-1/3 bg-gray-100 flex items-center justify-center">
                   <div className="w-full h-60 sm:h-full flex items-center justify-center">
                     <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
-                      <AvatarImage src="/lovable-uploads/36a3b81e-c8d0-4c00-b559-d5923562a8dc.png" alt="Jackline Conley" />
+                      {!jacklineImageError ? (
+                        <AvatarImage 
+                          src="/lovable-uploads/36a3b81e-c8d0-4c00-b559-d5923562a8dc.png" 
+                          alt="Jackline Conley"
+                          onError={handleJacklineImageError}
+                        />
+                      ) : (
+                        <AvatarImage 
+                          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=300&h=300" 
+                          alt="Jackline Conley"
+                        />
+                      )}
                       <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground">JC</AvatarFallback>
                     </Avatar>
                   </div>
