@@ -23,12 +23,16 @@ const Team = () => {
           <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardContent className="p-0">
               <div className="flex flex-col sm:flex-row">
-                <div className="sm:w-1/3">
-                  <img 
-                    src="/lovable-uploads/07938fde-7a20-45ba-8f51-8734b2ab49da.png" 
-                    alt="Gladys Lufen" 
-                    className="w-full h-60 sm:h-full object-cover object-center"
-                  />
+                <div className="sm:w-1/3 bg-gray-100 flex items-center justify-center">
+                  <div className="w-full h-60 sm:h-full flex items-center justify-center">
+                    <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
+                      <AvatarImage 
+                        src="/lovable-uploads/07938fde-7a20-45ba-8f51-8734b2ab49da.png" 
+                        alt="Gladys Lufen" 
+                      />
+                      <AvatarFallback className="text-3xl">GL</AvatarFallback>
+                    </Avatar>
+                  </div>
                 </div>
                 <div className="sm:w-2/3 p-6 flex flex-col justify-center">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Gladys Lufen</h3>
@@ -43,12 +47,16 @@ const Team = () => {
           <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardContent className="p-0">
               <div className="flex flex-col sm:flex-row">
-                <div className="sm:w-1/3">
-                  <img 
-                    src="/lovable-uploads/36a3b81e-c8d0-4c00-b559-d5923562a8dc.png" 
-                    alt="Jackline Conley" 
-                    className="w-full h-60 sm:h-full object-cover object-center"
-                  />
+                <div className="sm:w-1/3 bg-gray-100 flex items-center justify-center">
+                  <div className="w-full h-60 sm:h-full flex items-center justify-center">
+                    <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
+                      <AvatarImage 
+                        src="/lovable-uploads/36a3b81e-c8d0-4c00-b559-d5923562a8dc.png" 
+                        alt="Jackline Conley" 
+                      />
+                      <AvatarFallback className="text-3xl">JC</AvatarFallback>
+                    </Avatar>
+                  </div>
                 </div>
                 <div className="sm:w-2/3 p-6 flex flex-col justify-center">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Jackline Conley</h3>
