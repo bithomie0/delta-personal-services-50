@@ -27,7 +27,7 @@ const Team = () => {
                   <div className="w-full h-60 sm:h-full flex items-center justify-center">
                     <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
                       <AvatarImage 
-                        src="/lovable-uploads/ab2966f5-594d-447a-938c-9f851965f165.png" 
+                        src="/lovable-uploads/ff30a633-dc5c-43e8-a2fe-d8684f3443bd.png" 
                         alt="Gladys Lufen" 
                       />
                       <AvatarFallback className="text-3xl">GL</AvatarFallback>
