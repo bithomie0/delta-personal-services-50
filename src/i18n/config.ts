@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -120,7 +119,7 @@ const resources = {
       "quality_first_desc": "Gewährleistung perfekter Übereinstimmungen zwischen Fachkräften und Organisationen.",
       
       // Services Section
-      "services_title": "Unsere Leistungen",
+      "services_title": "Unsere Services",
       "services_subtitle": "Umfassende Unterstützung für Pflegefachkräfte, die ihre berufliche Zukunft in Deutschland gestalten möchten.",
       "for_nurses": "Für Pflegefachkräfte",
       "for_nurses_desc": "Ihr Weg zu einer Pflegekarriere in Deutschland",
