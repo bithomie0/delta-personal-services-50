@@ -47,7 +47,7 @@ const Team = () => {
                     <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
                       {!gladysImageError ? (
                         <AvatarImage 
-                          src="/lovable-uploads/9128a173-b25e-4d17-a548-3b757e0b2fd4.png" 
+                          src="/lovable-uploads/c00b4304-005f-441e-b559-f239d786c71d.png" 
                           alt="Gladys Lufen"
                           onError={handleGladysImageError}
                         />
@@ -85,7 +85,7 @@ const Team = () => {
                         />
                       ) : (
                         <AvatarImage 
-                          src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=300&h=300" 
+                          src="https://images.unsplash.com/photo-1581091226825-6a2a5aee158?auto=format&fit=crop&w=300&h=300" 
                           alt="Jackline Conley"
                         />
                       )}
