@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -20,8 +21,8 @@ const resources = {
       "our_story_text": "Delta Personal Services is dedicated to being a bridge between qualified nursing professionals from Asia and Africa and healthcare opportunities in Germany. We understand the challenges of cross-border recruitment and provide comprehensive support throughout the entire journey.",
       "our_mission": "Our Mission",
       "our_mission_text": "We're committed to addressing Germany's skilled worker shortage while creating life-changing opportunities for international nursing professionals seeking to build their careers in Germany.",
-      "expert_team": "Expert Team",
-      "expert_team_desc": "Led by professionals with firsthand experience in healthcare.",
+      "expert_team": "Trusted Partner",
+      "expert_team_desc": "Building reliable relationships through personalized support and guidance.",
       "global_network": "Global Network",
       "global_network_desc": "Connecting talent from around the world with German opportunities.",
       "quality_first": "Quality First",
@@ -100,8 +101,8 @@ const resources = {
       "our_story_text": "Delta Personal Services ist spezialisiert auf die Vermittlung von qualifiziertem Pflegepersonal in den deutschen Gesundheitssektor. Wir verstehen die Herausforderungen, die mit der grenzüberschreitenden Rekrutierung verbunden sind und bieten eine umfassende Unterstützung während des gesamten Prozesses.",
       "our_mission": "Unsere Mission",
       "our_mission_text": "Unser Ziel ist es, dem Fachkräftemangel in Deutschland entgegenzuwirken und internationalen Pflegekräften neue Perspektiven und eine berufliche Heimat in Deutschland zu bieten.",
-      "expert_team": "Expertenteam",
-      "expert_team_desc": "Geführt von Fachleuten mit direkter Erfahrung im Gesundheitswesen.",
+      "expert_team": "Vertrauenswürdiger Partner",
+      "expert_team_desc": "Aufbau zuverlässiger Beziehungen durch persönliche Betreuung und Begleitung.",
       "global_network": "Globales Netzwerk",
       "global_network_desc": "Verbindung von Talenten aus der ganzen Welt mit deutschen Möglichkeiten.",
       "quality_first": "Qualität zuerst",
