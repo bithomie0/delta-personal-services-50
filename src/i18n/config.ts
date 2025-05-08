@@ -27,6 +27,14 @@ const resources = {
       "quality_first": "Quality First",
       "quality_first_desc": "Ensuring perfect matches between professionals and organizations.",
       
+      // Team Section
+      "team_title": "Our Team",
+      "team_description": "Get to know the Delta Personal Service team. We are always available to assist you and support you with your questions & concerns.",
+      "managing_director": "Managing Director",
+      "team_member_role": "Recruitment Specialist",
+      "gladys_description": "With extensive experience in international recruitment, Gladys leads our team to connect qualified nursing professionals with German healthcare opportunities.",
+      "jackline_description": "Jackline specializes in finding the perfect match between healthcare professionals and German institutions, ensuring a smooth transition for all parties.",
+      
       // Services Section
       "services_title": "Our Services",
       "services_subtitle": "Comprehensive support for nursing professionals seeking opportunities in Germany",
@@ -130,6 +138,14 @@ const resources = {
       "global_network_desc": "Verbindung von Talenten aus der ganzen Welt mit deutschen Möglichkeiten.",
       "quality_first": "Qualität zuerst",
       "quality_first_desc": "Gewährleistung perfekter Übereinstimmungen zwischen Fachkräften und Organisationen.",
+      
+      // Team Section
+      "team_title": "Unser Team",
+      "team_description": "Lernen Sie das Team von Delta Personal Service näher kennen. Wir stehen Ihnen jederzeit zur Verfügung und unterstützen Sie stets bei Ihren Fragen & Anliegen.",
+      "managing_director": "Geschäftsführerin",
+      "team_member_role": "Rekrutierungsspezialistin",
+      "gladys_description": "Mit umfangreicher Erfahrung in der internationalen Rekrutierung führt Gladys unser Team, um qualifizierte Pflegefachkräfte mit deutschen Gesundheitseinrichtungen zu verbinden.",
+      "jackline_description": "Jackline ist spezialisiert auf die perfekte Vermittlung zwischen Gesundheitsfachkräften und deutschen Institutionen und sorgt für einen reibungslosen Übergang für alle Beteiligten.",
       
       // Services Section
       "services_title": "Unsere Services",
