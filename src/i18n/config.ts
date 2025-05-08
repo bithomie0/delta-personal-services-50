@@ -159,7 +159,7 @@ const resources = {
       
       // New translation
       "nursing_ausbildung": "Pflegeausbildung",
-      "connecting_professionals": "Verbindung qualifizierter Pflegefachkräfte mit deutschen Gesundheitseinrichtungen."
+      "connecting_professionals": "Vermittlung von Fachkräften aus dem Bereich der Pflege an die entsprechenden Einrichtungen."
     }
   }
 };
