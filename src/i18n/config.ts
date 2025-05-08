@@ -90,7 +90,20 @@ const resources = {
       "copyright": "Delta Personal Services. All rights reserved.",
       
       // New translation
-      "connecting_professionals": "Connecting qualified nursing professionals with German healthcare opportunities."
+      "connecting_professionals": "Connecting qualified nursing professionals with German healthcare opportunities.",
+      
+      // Imprint translations
+      "imprint": "Imprint",
+      "imprint_title": "Imprint",
+      "company_registration": "Company Registration",
+      "company_registration_text": "Delta Personal Service UG is a German registered company.",
+      "recruitment_agency": "We are also registered as a professional and trusted Recruitment Agency with German authorities.",
+      "company_address": "Address",
+      "tax_registration": "Tax Registration",
+      "tax_registration_number": "Tax Registration number, Wuppertal: 147/5815/2168",
+      "management": "Management",
+      "managing_director": "Managing Director",
+      "contact_info": "Contact Information"
     }
   },
   de: {
@@ -182,7 +195,20 @@ const resources = {
       "copyright": "Delta Personal Services. Alle Rechte vorbehalten.",
       
       // New translation
-      "connecting_professionals": "Vermittlung von Fachkräften aus dem Bereich der Pflege an die entsprechenden Einrichtungen."
+      "connecting_professionals": "Vermittlung von Fachkräften aus dem Bereich der Pflege an die entsprechenden Einrichtungen.",
+      
+      // Imprint translations
+      "imprint": "Impressum",
+      "imprint_title": "Impressum",
+      "company_registration": "Unternehmensregistrierung",
+      "company_registration_text": "Delta Personal Service UG ist ein in Deutschland registriertes Unternehmen.",
+      "recruitment_agency": "Wir sind auch als professionelle und vertrauenswürdige Rekrutierungsagentur bei deutschen Behörden registriert.",
+      "company_address": "Adresse",
+      "tax_registration": "Steuerregistrierung",
+      "tax_registration_number": "Steuerregistrierungsnummer, Wuppertal: 147/5815/2168",
+      "management": "Geschäftsführung",
+      "managing_director": "Geschäftsführerin",
+      "contact_info": "Kontaktinformationen"
     }
   }
 };

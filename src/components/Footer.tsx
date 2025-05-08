@@ -1,5 +1,7 @@
+
 import { Facebook, Twitter, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -30,7 +32,7 @@ const Footer = () => {
                 <a href="#contact" className="text-gray-400 hover:text-white">{t("contact")}</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white">Imprint</a>
+                <Link to="/imprint" className="text-gray-400 hover:text-white">{t("imprint")}</Link>
               </li>
             </ul>
           </div>
