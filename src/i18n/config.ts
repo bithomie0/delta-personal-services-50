@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -30,7 +31,7 @@ const resources = {
       // Team Section
       "team_title": "Our Team",
       "team_description": "Get to know the Delta Personal Service team. We are always available to assist you and support you with your questions & concerns.",
-      "managing_director": "Managing Director",
+      "team_managing_director": "Managing Director",
       "team_member_role": "Recruitment Specialist",
       "gladys_description": "With extensive experience in international recruitment, Gladys leads our team to connect qualified nursing professionals with German healthcare opportunities.",
       "jackline_description": "Jackline specializes in finding the perfect match between healthcare professionals and German institutions, ensuring a smooth transition for all parties.",
@@ -142,7 +143,7 @@ const resources = {
       // Team Section
       "team_title": "Unser Team",
       "team_description": "Lernen Sie das Team von Delta Personal Service näher kennen. Wir stehen Ihnen jederzeit zur Verfügung und unterstützen Sie stets bei Ihren Fragen & Anliegen.",
-      "managing_director": "Geschäftsführerin",
+      "team_managing_director": "Geschäftsführerin",
       "team_member_role": "Rekrutierungsspezialistin",
       "gladys_description": "Mit umfangreicher Erfahrung in der internationalen Rekrutierung führt Gladys unser Team, um qualifizierte Pflegefachkräfte mit deutschen Gesundheitseinrichtungen zu verbinden.",
       "jackline_description": "Jackline ist spezialisiert auf die perfekte Vermittlung zwischen Gesundheitsfachkräften und deutschen Institutionen und sorgt für einen reibungslosen Übergang für alle Beteiligten.",
@@ -223,7 +224,7 @@ const resources = {
       "tax_registration": "Steuerregistrierung",
       "tax_registration_number": "Steuerregistrierungsnummer, Wuppertal: 147/5815/2168",
       "management": "Geschäftsführung",
-      "managing_director": "Geschäftsführerin",
+      "managing_director": "Managing Director",
       "contact_info": "Kontaktinformationen"
     }
   }

@@ -32,7 +32,7 @@ const Team = () => {
                 </div>
                 <div className="sm:w-2/3 p-6 flex flex-col justify-center">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Gladys Lufen</h3>
-                  <p className="text-sm text-secondary font-semibold mb-4">{t("managing_director")}</p>
+                  <p className="text-sm text-secondary font-semibold mb-4">{t("team_managing_director")}</p>
                   <p className="text-gray-600">{t("gladys_description")}</p>
                 </div>
               </div>
