@@ -1,13 +1,11 @@
-
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-
 const Team = () => {
-  const { t } = useTranslation();
-
-  return (
-    <section id="team" className="py-16 bg-gray-50">
+  const {
+    t
+  } = useTranslation();
+  return <section id="team" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
@@ -26,11 +24,9 @@ const Team = () => {
                 <div className="sm:w-1/3 bg-gray-100 flex items-center justify-center">
                   <div className="w-full h-60 sm:h-full flex items-center justify-center">
                     <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
-                      <AvatarImage 
-                        src="/lovable-uploads/ff30a633-dc5c-43e8-a2fe-d8684f3443bd.png" 
-                        alt="Gladys Lufen" 
-                      />
-                      <AvatarFallback className="text-3xl">GL</AvatarFallback>
+                      <AvatarImage src="/lovable-uploads/ff30a633-dc5c-43e8-a2fe-d8684f3443bd.png" alt="Gladys Lufen" />
+                      <AvatarFallback className="text-3xl">
+                    </AvatarFallback>
                     </Avatar>
                   </div>
                 </div>
@@ -50,10 +46,7 @@ const Team = () => {
                 <div className="sm:w-1/3 bg-gray-100 flex items-center justify-center">
                   <div className="w-full h-60 sm:h-full flex items-center justify-center">
                     <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
-                      <AvatarImage 
-                        src="/lovable-uploads/36a3b81e-c8d0-4c00-b559-d5923562a8dc.png" 
-                        alt="Jackline Conley" 
-                      />
+                      <AvatarImage src="/lovable-uploads/36a3b81e-c8d0-4c00-b559-d5923562a8dc.png" alt="Jackline Conley" />
                       <AvatarFallback className="text-3xl">JC</AvatarFallback>
                     </Avatar>
                   </div>
@@ -68,8 +61,6 @@ const Team = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Team;
