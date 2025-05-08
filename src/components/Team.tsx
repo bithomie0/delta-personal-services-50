@@ -79,7 +79,7 @@ const Team = () => {
                     <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
                       {!jacklineImageError ? (
                         <AvatarImage 
-                          src="/lovable-uploads/36a3b81e-c8d0-4c00-b559-d5923562a8dc.png" 
+                          src="/lovable-uploads/3b711b06-13ad-4492-9f46-5e5821f1a0ae.png" 
                           alt="Jackline Conley"
                           onError={handleJacklineImageError}
                         />
