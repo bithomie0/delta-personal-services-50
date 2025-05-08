@@ -52,6 +52,7 @@ const resources = {
       "accommodation": "Accommodation and Settling in Support",
       "visa_info": "Document Translation & Visa Support",
       "networking": "Career Placement & Professional Integration",
+      "nursing_ausbildung": "Nursing Vocational Training (Ausbildung)",
       
       // Resources Section
       "resources_title": "Useful Resources",
@@ -90,7 +91,6 @@ const resources = {
       "copyright": "Delta Personal Services. All rights reserved.",
       
       // New translation
-      "nursing_ausbildung": "Nursing Vocational Training (Ausbildung)",
       "connecting_professionals": "Connecting qualified nursing professionals with German healthcare opportunities."
     }
   },
@@ -135,6 +135,17 @@ const resources = {
       "visa_docs": "Unterstützung bei Visa und Dokumentation",
       "placement": "Umfassende Rekrutierungslösungen",
       
+      // Updated translations for additional services section
+      "additional_services": "Schrittweise Unterstützung",
+      "additional_desc": "Umfassende Unterstützung für Ihre Reise nach Deutschland",
+      "german_course": "Deutschsprachtraining",
+      "childhood_edu": "Kulturelle Integrationsunterstützung",
+      "vocational": "Einwanderungs- und Anerkennungsunterstützung",
+      "accommodation": "Unterkunft und Eingewöhnungshilfe",
+      "visa_info": "Dokumentenübersetzung & Visa-Unterstützung",
+      "networking": "Berufsvermittlung & berufliche Integration",
+      "nursing_ausbildung": "Pflegeausbildung",
+      
       // Resources Section
       "resources_title": "Nützliche Ressourcen",
       "resources_subtitle": "Hilfreiche Informationen für Pflegefachkräfte, die in Deutschland arbeiten möchten",
@@ -172,7 +183,6 @@ const resources = {
       "copyright": "Delta Personal Services. Alle Rechte vorbehalten.",
       
       // New translation
-      "nursing_ausbildung": "Pflegeausbildung",
       "connecting_professionals": "Vermittlung von Fachkräften aus dem Bereich der Pflege an die entsprechenden Einrichtungen."
     }
   }
