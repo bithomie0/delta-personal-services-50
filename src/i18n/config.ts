@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -96,10 +97,10 @@ const resources = {
       // About Section
       "about_title": "Über Delta Personal Services",
       "about_subtitle": "Ihr Partner für internationale Pflegekräfterekrutierung in Deutschland",
-      "our_story": "Unsere Geschichte",
-      "our_story_text": "Delta Personal Services hat es sich zur Aufgabe gemacht, eine Brücke zwischen qualifizierten Pflegefachkräften aus Asien und Afrika und Beschäftigungsmöglichkeiten im deutschen Gesundheitswesen zu schlagen. Wir verstehen die Herausforderungen der grenzüberschreitenden Rekrutierung und bieten umfassende Unterstützung während des gesamten Prozesses.",
+      "our_story": "Unser Auftrag",
+      "our_story_text": "Delta Personal Services ist spezialisiert auf die Vermittlung von qualifiziertem Pflegepersonal in den deutschen Gesundheitssektor. Wir verstehen die Herausforderungen, die mit der grenzüberschreitenden Rekrutierung verbunden sind und bieten eine umfassende Unterstützung während des gesamten Prozesses.",
       "our_mission": "Unsere Mission",
-      "our_mission_text": "Wir setzen uns dafür ein, den Fachkräftemangel in Deutschland zu beheben und dabei lebensverändernde Möglichkeiten für internationale Pflegekräfte zu schaffen, die ihre Karriere in Deutschland aufbauen möchten.",
+      "our_mission_text": "Unser Ziel ist es, dem Fachkräftemangel in Deutschland entgegenzuwirken und internationalen Pflegekräften neue Perspektiven und eine berufliche Heimat in Deutschland zu bieten.",
       "expert_team": "Expertenteam",
       "expert_team_desc": "Geführt von Fachleuten mit direkter Erfahrung im Gesundheitswesen.",
       "global_network": "Globales Netzwerk",
