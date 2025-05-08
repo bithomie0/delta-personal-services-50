@@ -53,6 +53,17 @@ const resources = {
       "visa_info": "Document Translation & Visa Support",
       "networking": "Career Placement & Professional Integration",
       
+      // Resources Section
+      "resources_title": "Useful Resources",
+      "resources_subtitle": "Helpful information for nursing professionals planning to work in Germany",
+      "make_it_germany_title": "Make it in Germany",
+      "make_it_germany_desc": "Official website for qualified professionals seeking to work in Germany with specific information for nursing careers",
+      "recognition_title": "Recognition Finder",
+      "recognition_desc": "Tool to find out how to get your foreign professional qualification recognized in Germany",
+      "goethe_title": "Goethe-Institut",
+      "goethe_desc": "Information about German language courses and exams needed for working in Germany",
+      "visit_resource": "Visit Resource",
+      
       // Contact Section
       "contact_title": "Contact Us",
       "contact_subtitle": "Need caregivers? Get in touch with our team to discuss your needs",
@@ -123,6 +134,17 @@ const resources = {
       "prescreened": "Vorgeprüfte Kandidaten mit 4-jährigem Bachelor-Abschluss oder gleichwertigem Abschluss",
       "visa_docs": "Unterstützung bei Visa und Dokumentation",
       "placement": "Umfassende Rekrutierungslösungen",
+      
+      // Resources Section
+      "resources_title": "Nützliche Ressourcen",
+      "resources_subtitle": "Hilfreiche Informationen für Pflegefachkräfte, die in Deutschland arbeiten möchten",
+      "make_it_germany_title": "Make it in Germany",
+      "make_it_germany_desc": "Offizielle Website für qualifizierte Fachkräfte, die in Deutschland arbeiten möchten, mit spezifischen Informationen für Pflegeberufe",
+      "recognition_title": "Anerkennungsfinder",
+      "recognition_desc": "Tool zur Ermittlung, wie Sie Ihre ausländische Berufsqualifikation in Deutschland anerkennen lassen können",
+      "goethe_title": "Goethe-Institut",
+      "goethe_desc": "Informationen über Deutschkurse und Prüfungen, die für die Arbeit in Deutschland erforderlich sind",
+      "visit_resource": "Ressource besuchen",
       
       // Contact Section
       "contact_title": "Kontakt",
