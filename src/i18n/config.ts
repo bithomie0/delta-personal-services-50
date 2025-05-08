@@ -138,7 +138,7 @@ const resources = {
       // Updated translations for additional services section
       "additional_services": "Schrittweise Unterstützung",
       "additional_desc": "Umfassende Unterstützung für Ihre Reise nach Deutschland",
-      "german_course": "Deutschsprachtraining",
+      "german_course": "Deutschsprachkurse A1 bis B2 speziell für Pflegekräfte",
       "childhood_edu": "Kulturelle Integrationsunterstützung",
       "vocational": "Einwanderungs- und Anerkennungsunterstützung",
       "accommodation": "Unterkunft und Eingewöhnungshilfe",
