@@ -1,6 +1,6 @@
+
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import { Languages } from "lucide-react";
 
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
@@ -13,12 +13,12 @@ const LanguageToggle = () => {
   return (
     <Button
       variant="ghost"
-      size="icon"
+      size="sm"
       onClick={toggleLanguage}
-      className="w-10 h-10 rounded-full"
+      className="rounded-full font-medium text-sm"
       title={i18n.language === 'en' ? 'Switch to German' : 'Auf Englisch umschalten'}
     >
-      <Languages className="h-5 w-5" />
+      {i18n.language === 'en' ? 'DE' : 'EN'}
     </Button>
   );
 };
