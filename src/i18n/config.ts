@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -110,7 +109,7 @@ const resources = {
       
       // Services Section
       "services_title": "Unsere Leistungen",
-      "services_subtitle": "Umfassende Unterstützung für Pflegefachkräfte, die Chancen in Deutschland suchen",
+      "services_subtitle": "Umfassende Unterstützung für Pflegefachkräfte, die ihre berufliche Zukunft in Deutschland gestalten möchten.",
       "for_nurses": "Für Pflegefachkräfte",
       "for_nurses_desc": "Ihr Weg zu einer Pflegekarriere in Deutschland",
       "qualification": "Unterstützung bei der Anerkennung der Qualifikation",
@@ -123,15 +122,6 @@ const resources = {
       "prescreened": "Vorgeprüfte Kandidaten mit 4-jährigem Bachelor-Abschluss oder gleichwertigem Abschluss",
       "visa_docs": "Unterstützung bei Visa und Dokumentation",
       "placement": "Umfassende Rekrutierungslösungen",
-      
-      "additional_services": "Schritt-für-Schritt-Unterstützung",
-      "additional_desc": "Umfassende Unterstützung für Ihren Weg nach Deutschland",
-      "german_course": "Deutschsprachtraining",
-      "childhood_edu": "Unterstützung bei kultureller Integration",
-      "vocational": "Einwanderung & Qualifikationsanerkennung",
-      "accommodation": "Unterstützung bei Unterkunft und Eingewöhnung",
-      "visa_info": "Dokumentenübersetzung & Visa-Unterstützung",
-      "networking": "Karrierevermittlung & berufliche Integration",
       
       // Contact Section
       "contact_title": "Kontakt",
