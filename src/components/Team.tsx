@@ -46,26 +46,32 @@ const Team = () => {
               <div className="flex flex-col sm:flex-row items-center">
                 <div className="w-full sm:w-2/5 p-6 flex justify-center">
                   <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-md">
-                    {!gladysImageError ? (
-                      <AspectRatio ratio={1/1} className="h-full w-full">
-                        <AvatarImage 
-                          src="/lovable-uploads/c00b4304-005f-441e-b559-f239d786c71d.png" 
-                          alt="Gladys Lufen"
-                          onError={handleGladysImageError}
-                          className="object-cover h-full w-full rounded-full"
-                        />
-                      </AspectRatio>
-                    ) : (
-                      <AspectRatio ratio={1/1} className="h-full w-full">
-                        <AvatarImage 
-                          src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=300&h=300" 
-                          alt="Gladys Lufen"
-                          className="object-cover h-full w-full rounded-full"
-                        />
-                      </AspectRatio>
-                    )}
-                    
-                    <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground rounded-full h-full w-full flex items-center justify-center">GL</AvatarFallback>
+                    <AspectRatio ratio={1/1} className="h-full w-full">
+                      {!gladysImageError ? (
+                        <Avatar className="h-full w-full">
+                          <AvatarImage 
+                            src="/lovable-uploads/c00b4304-005f-441e-b559-f239d786c71d.png" 
+                            alt="Gladys Lufen"
+                            onError={handleGladysImageError}
+                            className="object-cover h-full w-full"
+                          />
+                          <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground h-full w-full flex items-center justify-center">
+                            GL
+                          </AvatarFallback>
+                        </Avatar>
+                      ) : (
+                        <Avatar className="h-full w-full">
+                          <AvatarImage 
+                            src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=300&h=300" 
+                            alt="Gladys Lufen"
+                            className="object-cover h-full w-full"
+                          />
+                          <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground h-full w-full flex items-center justify-center">
+                            GL
+                          </AvatarFallback>
+                        </Avatar>
+                      )}
+                    </AspectRatio>
                   </div>
                 </div>
                 <div className="sm:w-3/5 p-6 flex flex-col justify-center">
@@ -83,26 +89,32 @@ const Team = () => {
               <div className="flex flex-col sm:flex-row items-center">
                 <div className="w-full sm:w-2/5 p-6 flex justify-center">
                   <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-md">
-                    {!jacklineImageError ? (
-                      <AspectRatio ratio={1/1} className="h-full w-full">
-                        <AvatarImage 
-                          src="/lovable-uploads/3b711b06-13ad-4492-9f46-5e5821f1a0ae.png" 
-                          alt="Jackline Conley"
-                          onError={handleJacklineImageError}
-                          className="object-cover h-full w-full rounded-full"
-                        />
-                      </AspectRatio>
-                    ) : (
-                      <AspectRatio ratio={1/1} className="h-full w-full">
-                        <AvatarImage 
-                          src="https://images.unsplash.com/photo-1581091226825-6a2a5aee158?auto=format&fit=crop&w=300&h=300" 
-                          alt="Jackline Conley"
-                          className="object-cover h-full w-full rounded-full"
-                        />
-                      </AspectRatio>
-                    )}
-                    
-                    <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground rounded-full h-full w-full flex items-center justify-center">JC</AvatarFallback>
+                    <AspectRatio ratio={1/1} className="h-full w-full">
+                      {!jacklineImageError ? (
+                        <Avatar className="h-full w-full">
+                          <AvatarImage 
+                            src="/lovable-uploads/3b711b06-13ad-4492-9f46-5e5821f1a0ae.png" 
+                            alt="Jackline Conley"
+                            onError={handleJacklineImageError}
+                            className="object-cover h-full w-full"
+                          />
+                          <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground h-full w-full flex items-center justify-center">
+                            JC
+                          </AvatarFallback>
+                        </Avatar>
+                      ) : (
+                        <Avatar className="h-full w-full">
+                          <AvatarImage 
+                            src="https://images.unsplash.com/photo-1581091226825-6a2a5aee158?auto=format&fit=crop&w=300&h=300" 
+                            alt="Jackline Conley"
+                            className="object-cover h-full w-full"
+                          />
+                          <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground h-full w-full flex items-center justify-center">
+                            JC
+                          </AvatarFallback>
+                        </Avatar>
+                      )}
+                    </AspectRatio>
                   </div>
                 </div>
                 <div className="sm:w-3/5 p-6 flex flex-col justify-center">
