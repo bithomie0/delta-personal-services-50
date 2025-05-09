@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { toast } from "@/hooks/use-toast";
 
 const Team = () => {
@@ -26,7 +27,8 @@ const Team = () => {
     });
   };
   
-  return <section id="team" className="py-16 bg-gray-50">
+  return (
+    <section id="team" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
@@ -41,29 +43,34 @@ const Team = () => {
           {/* Gladys Lufen */}
           <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardContent className="p-0">
-              <div className="flex flex-col sm:flex-row">
-                <div className="sm:w-1/3 bg-gray-100 flex items-center justify-center">
-                  <div className="w-full h-60 sm:h-full flex items-center justify-center">
-                    <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
-                      {!gladysImageError ? (
+              <div className="flex flex-col sm:flex-row items-center">
+                <div className="w-full sm:w-2/5 p-6 flex justify-center">
+                  <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-md">
+                    {!gladysImageError ? (
+                      <AspectRatio ratio={1/1} className="h-full w-full">
                         <AvatarImage 
                           src="/lovable-uploads/c00b4304-005f-441e-b559-f239d786c71d.png" 
                           alt="Gladys Lufen"
                           onError={handleGladysImageError}
+                          className="object-cover h-full w-full rounded-full"
                         />
-                      ) : (
+                      </AspectRatio>
+                    ) : (
+                      <AspectRatio ratio={1/1} className="h-full w-full">
                         <AvatarImage 
                           src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=300&h=300" 
                           alt="Gladys Lufen"
+                          className="object-cover h-full w-full rounded-full"
                         />
-                      )}
-                      <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground">GL</AvatarFallback>
-                    </Avatar>
+                      </AspectRatio>
+                    )}
+                    
+                    <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground rounded-full h-full w-full flex items-center justify-center">GL</AvatarFallback>
                   </div>
                 </div>
-                <div className="sm:w-2/3 p-6 flex flex-col justify-center">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Gladys Lufen</h3>
-                  <p className="text-sm text-secondary font-semibold mb-4">{t("team_managing_director")}</p>
+                <div className="sm:w-3/5 p-6 flex flex-col justify-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Gladys Lufen</h3>
+                  <p className="text-sm text-secondary font-semibold mb-4" style={{ color: "#30D5C8" }}>{t("team_managing_director")}</p>
                   <p className="text-gray-600">{t("gladys_description")}</p>
                 </div>
               </div>
@@ -73,29 +80,34 @@ const Team = () => {
           {/* Jackline Conley */}
           <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardContent className="p-0">
-              <div className="flex flex-col sm:flex-row">
-                <div className="sm:w-1/3 bg-gray-100 flex items-center justify-center">
-                  <div className="w-full h-60 sm:h-full flex items-center justify-center">
-                    <Avatar className="h-40 w-40 sm:h-48 sm:w-48">
-                      {!jacklineImageError ? (
+              <div className="flex flex-col sm:flex-row items-center">
+                <div className="w-full sm:w-2/5 p-6 flex justify-center">
+                  <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-md">
+                    {!jacklineImageError ? (
+                      <AspectRatio ratio={1/1} className="h-full w-full">
                         <AvatarImage 
                           src="/lovable-uploads/3b711b06-13ad-4492-9f46-5e5821f1a0ae.png" 
                           alt="Jackline Conley"
                           onError={handleJacklineImageError}
+                          className="object-cover h-full w-full rounded-full"
                         />
-                      ) : (
+                      </AspectRatio>
+                    ) : (
+                      <AspectRatio ratio={1/1} className="h-full w-full">
                         <AvatarImage 
                           src="https://images.unsplash.com/photo-1581091226825-6a2a5aee158?auto=format&fit=crop&w=300&h=300" 
                           alt="Jackline Conley"
+                          className="object-cover h-full w-full rounded-full"
                         />
-                      )}
-                      <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground">JC</AvatarFallback>
-                    </Avatar>
+                      </AspectRatio>
+                    )}
+                    
+                    <AvatarFallback className="text-3xl bg-secondary text-secondary-foreground rounded-full h-full w-full flex items-center justify-center">JC</AvatarFallback>
                   </div>
                 </div>
-                <div className="sm:w-2/3 p-6 flex flex-col justify-center">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Jackline Conley</h3>
-                  <p className="text-sm text-secondary font-semibold mb-4">{t("team_member_role")}</p>
+                <div className="sm:w-3/5 p-6 flex flex-col justify-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Jackline Conley</h3>
+                  <p className="text-sm text-secondary font-semibold mb-4" style={{ color: "#30D5C8" }}>{t("team_member_role")}</p>
                   <p className="text-gray-600">{t("jackline_description")}</p>
                 </div>
               </div>
@@ -103,7 +115,8 @@ const Team = () => {
           </Card>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 
 export default Team;
