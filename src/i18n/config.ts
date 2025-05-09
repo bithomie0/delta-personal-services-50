@@ -1,3 +1,4 @@
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -149,7 +150,7 @@ const resources = {
       "team_managing_director": "Geschäftsführerin",
       "team_member_role": "Mitgründerin",
       "gladys_description": "Eine qualifizierte Krankenschwester mit Erfahrung im Gesundheitswesen, die sowohl internationale als auch deutsche Gesundheitsbedürfnisse versteht.",
-      "jackline_description": "Eine Unternehmerin mit Hintergrund im Kinderbetreuungsgeschäft, die Gesundheitsfachkräften einen reibungslosen Übergang zu deutschen Institutionen ermöglicht.",
+      "jackline_description": "Eine Unternehmerin mit Hintergrund im Kinderbetreuung, die Gesundheitsfachkräften einen reibungslosen Übergang zu deutschen Institutionen ermöglicht.",
       "gladys_expertise_1": "Gesundheitssystem-Expertin",
       "gladys_expertise_2": "Examinierte Krankenschwester",
       "jackline_expertise_1": "Unternehmerin",
