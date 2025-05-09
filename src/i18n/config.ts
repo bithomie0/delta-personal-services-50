@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -33,8 +32,12 @@ const resources = {
       "team_description": "Get to know the Delta Personal Service team. We are always available to assist you and support you with your questions & concerns.",
       "team_managing_director": "Managing Director",
       "team_member_role": "Recruitment Specialist",
-      "gladys_description": "With extensive experience in international recruitment, Gladys leads our team to connect qualified nursing professionals with German healthcare opportunities.",
-      "jackline_description": "Jackline specializes in finding the perfect match between healthcare professionals and German institutions, ensuring a smooth transition for all parties.",
+      "gladys_description": "With extensive experience in international recruitment, Gladys leads our team to connect qualified nursing professionals with German healthcare opportunities. As a healthcare system expert, she understands the complexities of both international and German medical structures. Her background as a registered nurse provides valuable clinical insights to our recruitment process.",
+      "jackline_description": "Jackline specializes in finding the perfect match between healthcare professionals and German institutions, ensuring a smooth transition for all parties. As an entrepreneur in the healthcare sector, she brings innovative approaches to recruitment challenges. Her expertise in childcare placement further enhances our service portfolio.",
+      "gladys_expertise_1": "Healthcare System Expert",
+      "gladys_expertise_2": "Registered Nurse",
+      "jackline_expertise_1": "Entrepreneur",
+      "jackline_expertise_2": "Childcare Expert",
       
       // Services Section
       "services_title": "Our Services",
@@ -145,8 +148,12 @@ const resources = {
       "team_description": "Lernen Sie das Team von Delta Personal Service näher kennen. Wir stehen Ihnen jederzeit zur Verfügung und unterstützen Sie stets bei Ihren Fragen & Anliegen.",
       "team_managing_director": "Geschäftsführerin",
       "team_member_role": "Rekrutierungsspezialistin",
-      "gladys_description": "Mit umfangreicher Erfahrung in der internationalen Rekrutierung führt Gladys unser Team, um qualifizierte Pflegefachkräfte mit deutschen Gesundheitseinrichtungen zu verbinden.",
-      "jackline_description": "Jackline ist spezialisiert auf die perfekte Vermittlung zwischen Gesundheitsfachkräften und deutschen Institutionen und sorgt für einen reibungslosen Übergang für alle Beteiligten.",
+      "gladys_description": "Mit umfangreicher Erfahrung in der internationalen Rekrutierung führt Gladys unser Team, um qualifizierte Pflegefachkräfte mit deutschen Gesundheitseinrichtungen zu verbinden. Als Expertin für Gesundheitssysteme versteht sie die Komplexität sowohl internationaler als auch deutscher medizinischer Strukturen. Ihr Hintergrund als Krankenschwester bringt wertvolle klinische Einblicke in unseren Rekrutierungsprozess.",
+      "jackline_description": "Jackline ist spezialisiert auf die perfekte Vermittlung zwischen Gesundheitsfachkräften und deutschen Institutionen und sorgt für einen reibungslosen Übergang für alle Beteiligten. Als Unternehmerin im Gesundheitssektor bringt sie innovative Ansätze für Rekrutierungsherausforderungen ein. Ihre Expertise in der Kinderbetreuungsvermittlung erweitert zusätzlich unser Dienstleistungsportfolio.",
+      "gladys_expertise_1": "Gesundheitssystem-Expertin",
+      "gladys_expertise_2": "Examinierte Krankenschwester",
+      "jackline_expertise_1": "Unternehmerin",
+      "jackline_expertise_2": "Kinderbetreuungs-Expertin",
       
       // Services Section
       "services_title": "Unsere Services",

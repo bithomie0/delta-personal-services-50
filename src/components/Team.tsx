@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
 
 const Team = () => {
@@ -44,7 +45,7 @@ const Team = () => {
             <CardContent className="p-6">
               <div className="flex flex-col sm:flex-row items-center gap-6">
                 <div className="shrink-0 flex justify-center">
-                  <Avatar className="h-44 w-44 rounded-full bg-gray-100">
+                  <Avatar className="h-48 w-48 rounded-full bg-gray-100">
                     {!gladysImageError ? (
                       <AvatarImage 
                         src="/lovable-uploads/c00b4304-005f-441e-b559-f239d786c71d.png" 
@@ -64,7 +65,13 @@ const Team = () => {
                 </div>
                 <div className="flex-1 text-center sm:text-left">
                   <h3 className="text-2xl font-bold text-gray-900 mb-1">Gladys Lufen</h3>
-                  <p className="text-sm font-medium mb-4 text-secondary">{t("team_managing_director")}</p>
+                  <p className="text-sm font-medium mb-2 text-secondary">{t("team_managing_director")}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4 justify-center sm:justify-start">
+                    <Badge variant="secondary" className="text-xs">{t("gladys_expertise_1")}</Badge>
+                    <Badge variant="secondary" className="text-xs">{t("gladys_expertise_2")}</Badge>
+                  </div>
+                  
                   <p className="text-gray-600">{t("gladys_description")}</p>
                 </div>
               </div>
@@ -76,7 +83,7 @@ const Team = () => {
             <CardContent className="p-6">
               <div className="flex flex-col sm:flex-row items-center gap-6">
                 <div className="shrink-0 flex justify-center">
-                  <Avatar className="h-44 w-44 rounded-full bg-gray-100">
+                  <Avatar className="h-48 w-48 rounded-full bg-gray-100">
                     {!jacklineImageError ? (
                       <AvatarImage 
                         src="/lovable-uploads/3b711b06-13ad-4492-9f46-5e5821f1a0ae.png" 
@@ -96,7 +103,13 @@ const Team = () => {
                 </div>
                 <div className="flex-1 text-center sm:text-left">
                   <h3 className="text-2xl font-bold text-gray-900 mb-1">Jackline Conley</h3>
-                  <p className="text-sm font-medium mb-4 text-secondary">{t("team_member_role")}</p>
+                  <p className="text-sm font-medium mb-2 text-secondary">{t("team_member_role")}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4 justify-center sm:justify-start">
+                    <Badge variant="secondary" className="text-xs">{t("jackline_expertise_1")}</Badge>
+                    <Badge variant="secondary" className="text-xs">{t("jackline_expertise_2")}</Badge>
+                  </div>
+                  
                   <p className="text-gray-600">{t("jackline_description")}</p>
                 </div>
               </div>
