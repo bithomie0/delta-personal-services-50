@@ -1,15 +1,16 @@
+
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
+
 const Team = () => {
-  const {
-    t
-  } = useTranslation();
+  const { t } = useTranslation();
   const [gladysImageError, setGladysImageError] = useState(false);
   const [jacklineImageError, setJacklineImageError] = useState(false);
+
   const handleGladysImageError = () => {
     setGladysImageError(true);
     toast({
@@ -17,6 +18,7 @@ const Team = () => {
       description: "Gladys's profile image couldn't be loaded. Showing fallback."
     });
   };
+
   const handleJacklineImageError = () => {
     setJacklineImageError(true);
     toast({
@@ -24,6 +26,7 @@ const Team = () => {
       description: "Jackline's profile image couldn't be loaded. Showing fallback."
     });
   };
+
   return <section id="team" className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
@@ -48,10 +51,6 @@ const Team = () => {
                 </div>
                 <div className="flex-1 text-center sm:text-left">
                   <h3 className="text-2xl font-bold text-gray-900 mb-1">Gladys Lufen</h3>
-                  
-                  
-                  
-                  
                   <p className="text-gray-600">{t("gladys_description")}</p>
                 </div>
               </div>
@@ -70,10 +69,6 @@ const Team = () => {
                 </div>
                 <div className="flex-1 text-center sm:text-left">
                   <h3 className="text-2xl font-bold text-gray-900 mb-1">Jackline Conley</h3>
-                  
-                  
-                  
-                  
                   <p className="text-gray-600">{t("jackline_description")}</p>
                 </div>
               </div>
@@ -83,4 +78,5 @@ const Team = () => {
       </div>
     </section>;
 };
+
 export default Team;
