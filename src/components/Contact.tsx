@@ -24,7 +24,12 @@ const Contact = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      await submitContactForm(data);
+      const response = await submitContactForm(data);
+      
+      if (response.error) {
+        throw new Error(response.error.message || "Failed to send email");
+      }
+      
       toast({
         title: "Success!",
         description: "Your message has been sent successfully.",
