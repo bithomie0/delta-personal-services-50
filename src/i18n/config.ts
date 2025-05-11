@@ -113,8 +113,7 @@ const resources = {
       "company_address": "Address",
       "tax_registration": "Tax Registration",
       "tax_registration_number": "Tax Registration number, Wuppertal: 147/5815/2168",
-      "management": "Management",
-      "managing_director": "Managing Director",
+      "founders": "Founders",
       "contact_info": "Contact Information"
     }
   },
@@ -134,6 +133,8 @@ const resources = {
       "about_subtitle": "Ihr Partner für internationale Pflegekräfterekrutierung in Deutschland",
       "our_story": "Unser Auftrag",
       "our_story_text": "Delta Personal Services ist spezialisiert auf die Vermittlung von qualifiziertem Pflegepersonal in den deutschen Gesundheitssektor. Wir verstehen die Herausforderungen, die mit der grenzüberschreitenden Rekrutierung verbunden sind und bieten eine umfassende Unterstützung während des gesamten Prozesses.",
+      
+      // Our Mission, Team Section, Services Section, Resources Section, Contact Section, Navigation translations
       "our_mission": "Unsere Mission",
       "our_mission_text": "Unser Ziel ist es, dem Fachkräftemangel in Deutschland entgegenzuwirken und internationalen Pflegekräften neue Perspektiven und eine berufliche Heimat in Deutschland zu bieten.",
       "expert_team": "Persönlicher Begleiter",
@@ -143,7 +144,6 @@ const resources = {
       "quality_first": "Qualität zuerst",
       "quality_first_desc": "Gewährleistung perfekter Übereinstimmungen zwischen Fachkräften und Organisationen.",
       
-      // Team Section
       "team_title": "Unser Team",
       "team_description": "Lernen Sie das Team von Delta Personal Service näher kennen. Wir stehen Ihnen jederzeit zur Verfügung und unterstützen Sie stets bei Ihren Fragen & Anliegen.",
       "team_managing_director": "Geschäftsführerin",
@@ -155,7 +155,6 @@ const resources = {
       "jackline_expertise_1": "Unternehmerin",
       "jackline_expertise_2": "Kinderbetreuungs-Expertin",
       
-      // Services Section
       "services_title": "Unsere Services",
       "services_subtitle": "Umfassende Unterstützung für Pflegefachkräfte, die ihre berufliche Zukunft in Deutschland gestalten möchten.",
       "for_nurses": "Für Pflegefachkräfte",
@@ -230,8 +229,7 @@ const resources = {
       "company_address": "Adresse",
       "tax_registration": "Steuerregistrierung",
       "tax_registration_number": "Steuerregistrierungsnummer, Wuppertal: 147/5815/2168",
-      "management": "Geschäftsführung",
-      "managing_director": "Managing Director",
+      "founders": "Gründer",
       "contact_info": "Kontaktinformationen"
     }
   }

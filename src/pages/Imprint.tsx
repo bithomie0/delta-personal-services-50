@@ -34,8 +34,8 @@ const Imprint = () => {
             </section>
             
             <section className="bg-white p-6 shadow rounded-lg">
-              <h2 className="text-xl font-semibold mb-4">{t("management")}</h2>
-              <p>{t("managing_director")}</p>
+              <h2 className="text-xl font-semibold mb-4">{t("founders")}</h2>
+              <p>Jackline Conley</p>
               <p>Gladys Lufen</p>
             </section>
             
