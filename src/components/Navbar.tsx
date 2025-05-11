@@ -3,11 +3,17 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import LanguageToggle from "./LanguageToggle";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const location = useLocation();
+  
+  // Function to generate the correct link based on current location
+  const getLink = (section: string) => {
+    return location.pathname !== "/" ? `/#${section}` : `#${section}`;
+  };
 
   return (
     <nav className="bg-white shadow-md fixed w-full z-50">
@@ -25,10 +31,10 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-6">
-            <a href="#home" className="text-gray-700 hover:text-secondary">{t('home')}</a>
-            <a href="#about" className="text-gray-700 hover:text-secondary">{t('about')}</a>
-            <a href="#services" className="text-gray-700 hover:text-secondary">{t('services')}</a>
-            <a href="#contact" className="text-gray-700 hover:text-secondary">{t('contact')}</a>
+            <a href={getLink("home")} className="text-gray-700 hover:text-secondary">{t('home')}</a>
+            <a href={getLink("about")} className="text-gray-700 hover:text-secondary">{t('about')}</a>
+            <a href={getLink("services")} className="text-gray-700 hover:text-secondary">{t('services')}</a>
+            <a href={getLink("contact")} className="text-gray-700 hover:text-secondary">{t('contact')}</a>
             <Link to="/imprint" className="text-gray-700 hover:text-secondary">{t('imprint')}</Link>
             <LanguageToggle />
           </div>
@@ -47,10 +53,10 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#home" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('home')}</a>
-              <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('about')}</a>
-              <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('services')}</a>
-              <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('contact')}</a>
+              <a href={getLink("home")} className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('home')}</a>
+              <a href={getLink("about")} className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('about')}</a>
+              <a href={getLink("services")} className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('services')}</a>
+              <a href={getLink("contact")} className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('contact')}</a>
               <Link to="/imprint" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('imprint')}</Link>
             </div>
           </div>

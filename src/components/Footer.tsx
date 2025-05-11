@@ -1,10 +1,16 @@
 
 import { Facebook, Twitter, Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useTranslation();
+  const location = useLocation();
+  
+  // Function to generate the correct link based on current location
+  const getLink = (section: string) => {
+    return location.pathname !== "/" ? `/#${section}` : `#${section}`;
+  };
   
   return (
     <footer className="bg-gray-900">
@@ -20,16 +26,16 @@ const Footer = () => {
             <h3 className="text-white text-lg font-semibold">{t("quick_links")}</h3>
             <ul className="mt-4 space-y-2">
               <li>
-                <a href="#home" className="text-gray-400 hover:text-white">{t("home")}</a>
+                <a href={getLink("home")} className="text-gray-400 hover:text-white">{t("home")}</a>
               </li>
               <li>
-                <a href="#about" className="text-gray-400 hover:text-white">{t("about")}</a>
+                <a href={getLink("about")} className="text-gray-400 hover:text-white">{t("about")}</a>
               </li>
               <li>
-                <a href="#services" className="text-gray-400 hover:text-white">{t("services")}</a>
+                <a href={getLink("services")} className="text-gray-400 hover:text-white">{t("services")}</a>
               </li>
               <li>
-                <a href="#contact" className="text-gray-400 hover:text-white">{t("contact")}</a>
+                <a href={getLink("contact")} className="text-gray-400 hover:text-white">{t("contact")}</a>
               </li>
               <li>
                 <Link to="/imprint" className="text-gray-400 hover:text-white">{t("imprint")}</Link>
