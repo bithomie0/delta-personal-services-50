@@ -7,12 +7,44 @@ export interface ContactFormData {
 }
 
 // Create a Resend instance with your API key
-// Note: In production, this should be handled in a secure backend
-const resendApiKey = "re_yourApiKey"; // Replace with your actual API key from Resend dashboard
-const resend = new Resend(resendApiKey);
+// In production, this should be handled in a secure backend
+let resendApiKey = ""; // Will be set by the user
+let resend: Resend | null = null;
+
+// Function to initialize the Resend API with your key
+export const initializeResendApi = (apiKey: string) => {
+  resendApiKey = apiKey;
+  resend = new Resend(apiKey);
+  // Save to localStorage for persistence (not secure for production)
+  localStorage.setItem('resendApiKey', apiKey);
+  return !!apiKey;
+};
+
+// Check if we have a saved API key
+export const loadSavedApiKey = () => {
+  const savedKey = localStorage.getItem('resendApiKey');
+  if (savedKey) {
+    initializeResendApi(savedKey);
+    return true;
+  }
+  return false;
+};
+
+// Check if the API key is set
+export const isResendConfigured = () => {
+  return !!resendApiKey && !!resend;
+};
 
 export const submitContactForm = async (data: ContactFormData) => {
   try {
+    // Check if Resend is configured
+    if (!resend) {
+      // Try to load from localStorage
+      if (!loadSavedApiKey()) {
+        return { error: { message: "Resend API key is not configured" } };
+      }
+    }
+    
     // Format the email content
     const emailContent = `
       Name: ${data.name}
@@ -26,7 +58,7 @@ export const submitContactForm = async (data: ContactFormData) => {
     `;
 
     // Send email using Resend
-    const response = await resend.emails.send({
+    const response = await resend!.emails.send({
       from: 'Delta Personal Service <noreply@yourdomain.com>', // Replace with your verified domain
       to: 'info@deltapersonalservice.biz',
       subject: `New Contact Form Submission from ${data.name}`,
@@ -37,7 +69,7 @@ export const submitContactForm = async (data: ContactFormData) => {
     return response;
   } catch (error) {
     console.error("Failed to send email:", error);
-    throw error;
+    return { error: { message: error instanceof Error ? error.message : "Unknown error occurred" } };
   }
 };
 
