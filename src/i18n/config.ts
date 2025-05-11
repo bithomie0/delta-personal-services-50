@@ -1,4 +1,3 @@
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -18,7 +17,7 @@ const resources = {
       "about_title": "About Delta Personal Services",
       "about_subtitle": "Your partner for international nursing recruitment in Germany",
       "our_story": "Our Story",
-      "our_story_text": "Delta Personal Services is dedicated to being a bridge between qualified nursing professionals from Asia and Africa and healthcare opportunities in Germany. We understand the challenges of cross-border recruitment and provide comprehensive support throughout the entire journey.",
+      "our_story_text": "Delta Personal Services is dedicated to being a bridge between qualified nursing professionals from abroad and healthcare opportunities in Germany. We understand the challenges of cross-border recruitment and provide comprehensive support throughout the entire journey.",
       "our_mission": "Our Mission",
       "our_mission_text": "We're committed to addressing Germany's skilled worker shortage while creating life-changing opportunities for international nursing professionals seeking to build their careers in Germany.",
       "expert_team": "Trusted Partner",
