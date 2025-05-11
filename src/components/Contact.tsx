@@ -2,27 +2,17 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, Loader, Key } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
-import { 
-  ContactFormData, 
-  submitContactForm, 
-  isResendConfigured, 
-  initializeResendApi, 
-  loadSavedApiKey 
-} from "@/lib/contact";
+import { ContactFormData, submitContactForm } from "@/lib/contact";
 import { useToast } from "@/components/ui/use-toast";
-import { useState, useEffect } from "react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useState } from "react";
 
 const Contact = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [apiKey, setApiKey] = useState("");
-  const [configured, setConfigured] = useState(false);
-  const [showApiConfig, setShowApiConfig] = useState(false);
   
   const {
     register,
@@ -30,12 +20,6 @@ const Contact = () => {
     reset,
     formState: { errors }
   } = useForm<ContactFormData>();
-
-  // Check for saved API key on component mount
-  useEffect(() => {
-    const hasKey = loadSavedApiKey();
-    setConfigured(hasKey);
-  }, []);
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -63,20 +47,6 @@ const Contact = () => {
     }
   };
 
-  const saveApiKey = () => {
-    if (apiKey) {
-      const success = initializeResendApi(apiKey);
-      if (success) {
-        setConfigured(true);
-        setShowApiConfig(false);
-        toast({
-          title: "Success!",
-          description: "Resend API key has been saved.",
-        });
-      }
-    }
-  };
-
   return (
     <div id="contact" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,47 +58,6 @@ const Contact = () => {
             {t('contact_subtitle')}
           </p>
         </div>
-
-        {/* API Key Configuration Section */}
-        {!configured && (
-          <div className="mt-8 max-w-lg mx-auto">
-            <Alert className="bg-amber-50 border-amber-200">
-              <AlertDescription>
-                <p>You need to configure your Resend API key to enable the contact form.</p>
-                <Button 
-                  variant="outline" 
-                  className="mt-2"
-                  onClick={() => setShowApiConfig(!showApiConfig)}
-                >
-                  <Key className="mr-2 h-4 w-4" />
-                  {showApiConfig ? "Hide API Key Form" : "Configure API Key"}
-                </Button>
-              </AlertDescription>
-            </Alert>
-          </div>
-        )}
-
-        {showApiConfig && !configured && (
-          <div className="mt-4 max-w-lg mx-auto bg-gray-50 p-6 rounded-lg border">
-            <h3 className="text-lg font-medium">Enter your Resend API Key</h3>
-            <p className="mt-1 text-sm text-gray-500">This key will be stored in your browser's localStorage.</p>
-            <div className="mt-4 space-y-4">
-              <Input
-                type="password"
-                placeholder="re_XXXXXXXXXXXX"
-                value={apiKey}
-                onChange={(e) => setApiKey(e.target.value)}
-              />
-              <Button 
-                onClick={saveApiKey}
-                disabled={!apiKey}
-                className="w-full bg-primary text-white hover:bg-primary/90"
-              >
-                Save API Key
-              </Button>
-            </div>
-          </div>
-        )}
 
         <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="bg-gray-50 p-8 rounded-lg">
@@ -172,7 +101,7 @@ const Contact = () => {
               </div>
               <Button
                 type="submit"
-                disabled={isSubmitting || !configured}
+                disabled={isSubmitting}
                 className="w-full bg-primary text-white hover:bg-primary/90"
               >
                 {isSubmitting ? (
@@ -187,11 +116,6 @@ const Contact = () => {
                   </>
                 )}
               </Button>
-              {!configured && (
-                <p className="text-sm text-center text-amber-600">
-                  Please configure your Resend API key to enable form submission
-                </p>
-              )}
             </form>
           </div>
 
