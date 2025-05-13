@@ -35,7 +35,6 @@ const Navbar = () => {
             <a href={getLink("about")} className="text-gray-700 hover:text-secondary">{t('about')}</a>
             <a href={getLink("services")} className="text-gray-700 hover:text-secondary">{t('services')}</a>
             <a href={getLink("contact")} className="text-gray-700 hover:text-secondary">{t('contact')}</a>
-            <Link to="/imprint" className="text-gray-700 hover:text-secondary">{t('imprint')}</Link>
             <LanguageToggle />
           </div>
 
@@ -57,7 +56,6 @@ const Navbar = () => {
               <a href={getLink("about")} className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('about')}</a>
               <a href={getLink("services")} className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('services')}</a>
               <a href={getLink("contact")} className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('contact')}</a>
-              <Link to="/imprint" className="block px-3 py-2 text-gray-700 hover:text-secondary">{t('imprint')}</Link>
             </div>
           </div>
         )}
