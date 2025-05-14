@@ -45,7 +45,7 @@ const Footer = () => {
           <div>
             <h3 className="text-white text-lg font-semibold">{t("follow_us")}</h3>
             <div className="mt-4 flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://www.facebook.com/share/1BzEKmKHui/" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">
                 <Facebook className="h-6 w-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white">
