@@ -106,7 +106,7 @@ export function DocumentUploader({
           file_type: selectedFile.type,
           upload_status: 'completed',
           is_translated: isTranslated,
-          has_anerkennung: documentType.slug === 'educational-certificates' ? hasAnerkennung : false,
+          has_anerkennung: documentType.slug === 'educational_certificates' ? hasAnerkennung : false,
         }, {
           onConflict: 'applicant_id,document_type_id'
         });
@@ -150,7 +150,7 @@ export function DocumentUploader({
           </DialogDescription>
         </DialogHeader>
 
-        {documentType.slug === 'educational-certificates' && (
+        {documentType.slug === 'educational_certificates' && (
           <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-950">
             <div className="flex items-start gap-3">
               <div className="text-blue-600 dark:text-blue-400">ℹ️</div>
@@ -231,7 +231,7 @@ export function DocumentUploader({
                 </div>
               </div>
 
-              {documentType.slug === 'educational-certificates' && (
+              {documentType.slug === 'educational_certificates' && (
                 <div className="flex items-start space-x-3">
                   <Checkbox
                     id="has-anerkennung"
