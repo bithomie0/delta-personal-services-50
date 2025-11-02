@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Upload, CheckCircle2, AlertCircle, Download, Trash2 } from 'lucide-react';
+import { Upload, CheckCircle2, AlertCircle, Download, Trash2, Languages, Award } from 'lucide-react';
 
 interface DocumentCardProps {
   documentType: {
@@ -17,6 +17,8 @@ interface DocumentCardProps {
     file_name: string;
     file_size: number;
     uploaded_at: string;
+    is_translated?: boolean;
+    has_anerkennung?: boolean;
   };
   onUpload: () => void;
   onDownload?: () => void;
@@ -71,6 +73,20 @@ export function DocumentCard({
               <p className="text-xs text-muted-foreground mt-1">
                 {(uploadedDocument.file_size / 1024 / 1024).toFixed(2)} MB
               </p>
+              <div className="flex gap-2 mt-2">
+                {uploadedDocument.is_translated && (
+                  <Badge variant="secondary" className="text-xs">
+                    <Languages className="h-3 w-3 mr-1" />
+                    Translated
+                  </Badge>
+                )}
+                {uploadedDocument.has_anerkennung && (
+                  <Badge variant="secondary" className="text-xs">
+                    <Award className="h-3 w-3 mr-1" />
+                    Anerkennung
+                  </Badge>
+                )}
+              </div>
             </div>
             <div className="flex gap-2">
               {onDownload && (

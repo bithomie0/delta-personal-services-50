@@ -496,37 +496,49 @@ export type Database = {
       }
       delta_applicant_documents: {
         Row: {
+          anerkennung_notes: string | null
           applicant_id: string
           document_type_id: string
           file_name: string
           file_path: string
           file_size: number
           file_type: string
+          has_anerkennung: boolean | null
           id: string
+          is_translated: boolean | null
+          translation_notes: string | null
           updated_at: string
           upload_status: string
           uploaded_at: string
         }
         Insert: {
+          anerkennung_notes?: string | null
           applicant_id: string
           document_type_id: string
           file_name: string
           file_path: string
           file_size: number
           file_type: string
+          has_anerkennung?: boolean | null
           id?: string
+          is_translated?: boolean | null
+          translation_notes?: string | null
           updated_at?: string
           upload_status?: string
           uploaded_at?: string
         }
         Update: {
+          anerkennung_notes?: string | null
           applicant_id?: string
           document_type_id?: string
           file_name?: string
           file_path?: string
           file_size?: number
           file_type?: string
+          has_anerkennung?: boolean | null
           id?: string
+          is_translated?: boolean | null
+          translation_notes?: string | null
           updated_at?: string
           upload_status?: string
           uploaded_at?: string

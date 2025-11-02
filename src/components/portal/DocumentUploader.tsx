@@ -3,8 +3,10 @@ import { supabase } from '@/integrations/supabase/client';
 import { useDeltaAuth } from '@/contexts/DeltaAuthContext';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Upload, X } from 'lucide-react';
+import { Upload, X, ExternalLink } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -38,6 +40,8 @@ export function DocumentUploader({
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isTranslated, setIsTranslated] = useState(false);
+  const [hasAnerkennung, setHasAnerkennung] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validateFile = (file: File): string | null => {
@@ -101,6 +105,8 @@ export function DocumentUploader({
           file_size: selectedFile.size,
           file_type: selectedFile.type,
           upload_status: 'completed',
+          is_translated: isTranslated,
+          has_anerkennung: documentType.slug === 'educational-certificates' ? hasAnerkennung : false,
         }, {
           onConflict: 'applicant_id,document_type_id'
         });
@@ -113,9 +119,7 @@ export function DocumentUploader({
       });
 
       onSuccess();
-      onClose();
-      setSelectedFile(null);
-      setProgress(0);
+      handleClose();
     } catch (error: any) {
       console.error('Upload error:', error);
       toast({
@@ -128,8 +132,16 @@ export function DocumentUploader({
     }
   };
 
+  const handleClose = () => {
+    setSelectedFile(null);
+    setProgress(0);
+    setIsTranslated(false);
+    setHasAnerkennung(false);
+    onClose();
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Upload {documentType.name}</DialogTitle>
@@ -137,6 +149,31 @@ export function DocumentUploader({
             Accepted formats: {documentType.accepted_formats.join(', ')} (Max 10MB)
           </DialogDescription>
         </DialogHeader>
+
+        {documentType.slug === 'educational-certificates' && (
+          <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-950">
+            <div className="flex items-start gap-3">
+              <div className="text-blue-600 dark:text-blue-400">ℹ️</div>
+              <div className="flex-1 text-sm">
+                <p className="font-medium text-blue-900 dark:text-blue-100 mb-1">
+                  Recognition (Anerkennung) Required
+                </p>
+                <p className="text-blue-700 dark:text-blue-300 mb-2">
+                  Your educational certificates may need official recognition (Anerkennung) in Germany.
+                </p>
+                <a
+                  href="https://www.anerkennung-in-deutschland.de/html/en/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 font-medium"
+                >
+                  Learn More About Anerkennung
+                  <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="space-y-4">
           <div
@@ -179,6 +216,38 @@ export function DocumentUploader({
             className="hidden"
           />
 
+          {selectedFile && !uploading && (
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start space-x-3">
+                <Checkbox
+                  id="is-translated"
+                  checked={isTranslated}
+                  onCheckedChange={(checked) => setIsTranslated(checked as boolean)}
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <Label htmlFor="is-translated" className="text-sm font-medium cursor-pointer">
+                    This document is translated to German
+                  </Label>
+                </div>
+              </div>
+
+              {documentType.slug === 'educational-certificates' && (
+                <div className="flex items-start space-x-3">
+                  <Checkbox
+                    id="has-anerkennung"
+                    checked={hasAnerkennung}
+                    onCheckedChange={(checked) => setHasAnerkennung(checked as boolean)}
+                  />
+                  <div className="grid gap-1.5 leading-none">
+                    <Label htmlFor="has-anerkennung" className="text-sm font-medium cursor-pointer">
+                      This certificate has Anerkennung (official recognition)
+                    </Label>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
           {uploading && (
             <div className="space-y-2">
               <Progress value={progress} />
@@ -189,7 +258,7 @@ export function DocumentUploader({
           )}
 
           <div className="flex gap-2">
-            <Button variant="outline" onClick={onClose} className="flex-1" disabled={uploading}>
+            <Button variant="outline" onClick={handleClose} className="flex-1" disabled={uploading}>
               Cancel
             </Button>
             <Button

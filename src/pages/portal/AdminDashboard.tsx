@@ -18,7 +18,8 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Progress } from '@/components/ui/progress';
-import { Loader2, Search, Download, Users, FileCheck, Clock, CheckCircle2, XCircle } from 'lucide-react';
+import { Loader2, Search, Download, Users, FileCheck, Clock, CheckCircle2, XCircle, Languages, Award } from 'lucide-react';
+import JSZip from 'jszip';
 
 export default function AdminDashboard() {
   return (
@@ -28,13 +29,27 @@ export default function AdminDashboard() {
   );
 }
 
+interface DocumentMatrixData {
+  id: string;
+  full_name: string;
+  email: string;
+  documents: Array<{
+    type: string;
+    name: string;
+    submitted: boolean;
+    required: boolean;
+    is_translated?: boolean;
+    has_anerkennung?: boolean;
+  }>;
+}
+
 function AdminContent() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(true);
   const [applicants, setApplicants] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [documentTypes, setDocumentTypes] = useState<any[]>([]);
-  const [documentMatrix, setDocumentMatrix] = useState<any[]>([]);
+  const [documentMatrix, setDocumentMatrix] = useState<DocumentMatrixData[]>([]);
   const [stats, setStats] = useState({
     total: 0,
     complete: 0,
@@ -114,20 +129,30 @@ function AdminContent() {
           profiles.map(async (profile) => {
             const { data: documents } = await supabase
               .from('delta_applicant_documents')
-              .select('document_type_id')
+              .select('document_type_id, is_translated, has_anerkennung')
               .eq('applicant_id', profile.id)
               .eq('upload_status', 'completed');
 
-            const submittedDocTypes = new Set(documents?.map(d => d.document_type_id) || []);
+            const submittedDocMap = new Map(
+              documents?.map(d => [d.document_type_id, { 
+                is_translated: d.is_translated || false, 
+                has_anerkennung: d.has_anerkennung || false 
+              }]) || []
+            );
 
             return {
               ...profile,
-              documents: docTypes.map(dt => ({
-                type: dt.slug,
-                name: dt.name,
-                submitted: submittedDocTypes.has(dt.id),
-                required: dt.is_required,
-              })),
+              documents: docTypes.map(dt => {
+                const docData = submittedDocMap.get(dt.id);
+                return {
+                  type: dt.slug,
+                  name: dt.name,
+                  submitted: !!docData,
+                  required: dt.is_required,
+                  is_translated: docData?.is_translated || false,
+                  has_anerkennung: docData?.has_anerkennung || false,
+                };
+              }),
             };
           })
         );
@@ -144,60 +169,90 @@ function AdminContent() {
     }
   };
 
-  const handleDownloadAll = async (applicantId: string) => {
+  const handleDownloadAll = async (applicantId: string, applicantName: string) => {
+    const toastId = toast({
+      title: 'Preparing download...',
+      duration: Infinity,
+    });
+    
     try {
-      const { data: documents } = await supabase
+      const { data: documents, error } = await supabase
         .from('delta_applicant_documents')
-        .select('file_path, file_name')
-        .eq('applicant_id', applicantId)
-        .eq('upload_status', 'completed');
+        .select('*')
+        .eq('applicant_id', applicantId);
+
+      if (error) throw error;
 
       if (!documents || documents.length === 0) {
         toast({
-          title: 'No documents',
+          title: 'No documents found',
           description: 'This applicant has not uploaded any documents yet',
+          variant: 'destructive',
         });
         return;
       }
 
       toast({
-        title: 'Preparing downloads',
-        description: `Preparing ${documents.length} documents...`,
+        title: `Creating ZIP file with ${documents.length} documents...`,
+        duration: Infinity,
       });
 
-      // Create signed URLs for all documents
-      const downloadPromises = documents.map(async (doc, index) => {
-        const { data, error } = await supabase.storage
+      // Create a new JSZip instance
+      const zip = new JSZip();
+
+      // Download each file and add to zip
+      for (let i = 0; i < documents.length; i++) {
+        const doc = documents[i];
+        
+        toast({
+          title: `Processing ${i + 1}/${documents.length}: ${doc.file_name}`,
+          duration: Infinity,
+        });
+
+        const { data, error: urlError } = await supabase.storage
           .from('delta_applicant_documents')
           .createSignedUrl(doc.file_path, 900);
 
-        if (error) throw error;
+        if (urlError) {
+          console.error(`Error creating signed URL for ${doc.file_name}:`, urlError);
+          continue;
+        }
 
-        // Use a small delay between downloads to avoid browser blocking
-        return new Promise<void>((resolve) => {
-          setTimeout(() => {
-            const link = document.createElement('a');
-            link.href = data.signedUrl;
-            link.download = doc.file_name;
-            link.target = '_blank';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            resolve();
-          }, index * 300);
-        });
-      });
-
-      await Promise.all(downloadPromises);
+        // Fetch the file as blob
+        const response = await fetch(data.signedUrl);
+        const blob = await response.blob();
+        
+        // Add to zip
+        zip.file(doc.file_name, blob);
+      }
 
       toast({
-        title: 'Download started',
-        description: `Downloading ${documents.length} documents`,
+        title: 'Generating ZIP file...',
+        duration: Infinity,
       });
-    } catch (error: any) {
+
+      // Generate the zip file
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+
+      // Create download link
+      const url = URL.createObjectURL(zipBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${applicantName.replace(/\s+/g, '_')}_documents.zip`;
+      link.click();
+
+      // Cleanup
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: 'Success',
+        description: `Successfully downloaded ${documents.length} documents`,
+      });
+    } catch (error) {
+      console.error('Error downloading documents:', error);
       toast({
         title: 'Download failed',
-        description: error.message,
+        description: 'Failed to download documents',
         variant: 'destructive',
       });
     }
@@ -337,7 +392,7 @@ function AdminContent() {
                             <Button
                               size="sm"
                               variant="outline"
-                              onClick={() => handleDownloadAll(applicant.id)}
+                              onClick={() => handleDownloadAll(applicant.id, applicant.full_name)}
                             >
                               <Download className="h-4 w-4 mr-2" />
                               Download All
@@ -403,13 +458,29 @@ function AdminContent() {
                             </TableCell>
                             {applicant.documents.map((doc: any, idx: number) => (
                               <TableCell key={idx} className="text-center">
-                                {doc.submitted ? (
-                                  <CheckCircle2 className="h-5 w-5 mx-auto text-green-500" />
-                                ) : doc.required ? (
-                                  <XCircle className="h-5 w-5 mx-auto text-red-500" />
-                                ) : (
-                                  <XCircle className="h-5 w-5 mx-auto text-muted-foreground/30" />
-                                )}
+                                <div className="flex flex-col items-center gap-1">
+                                  {doc.submitted ? (
+                                    <>
+                                      <CheckCircle2 className="h-5 w-5 text-green-500" />
+                                      <div className="flex gap-1">
+                                        {doc.is_translated && (
+                                          <div title="Translated">
+                                            <Languages className="h-3 w-3 text-blue-500" />
+                                          </div>
+                                        )}
+                                        {doc.has_anerkennung && (
+                                          <div title="Anerkennung">
+                                            <Award className="h-3 w-3 text-purple-500" />
+                                          </div>
+                                        )}
+                                      </div>
+                                    </>
+                                  ) : doc.required ? (
+                                    <XCircle className="h-5 w-5 text-red-500" />
+                                  ) : (
+                                    <XCircle className="h-5 w-5 text-muted-foreground/30" />
+                                  )}
+                                </div>
                               </TableCell>
                             ))}
                           </TableRow>
@@ -418,7 +489,7 @@ function AdminContent() {
                     </TableBody>
                   </Table>
                 </div>
-                <div className="mt-4 flex gap-4 text-sm text-muted-foreground">
+                <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-green-500" />
                     <span>Submitted</span>
@@ -430,6 +501,14 @@ function AdminContent() {
                   <div className="flex items-center gap-2">
                     <XCircle className="h-4 w-4 text-muted-foreground/30" />
                     <span>Not Submitted (Optional)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Languages className="h-4 w-4 text-blue-500" />
+                    <span>Translated</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Award className="h-4 w-4 text-purple-500" />
+                    <span>Anerkennung</span>
                   </div>
                 </div>
               </CardContent>
