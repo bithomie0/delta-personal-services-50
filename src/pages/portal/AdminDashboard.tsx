@@ -27,6 +27,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import JSZip from 'jszip';
+import { ApplicantDetailsDialog } from '@/components/portal/ApplicantDetailsDialog';
 
 export default function AdminDashboard() {
   return (
@@ -66,6 +67,8 @@ function AdminContent() {
     complete: 0,
     pending: 0,
   });
+  const [selectedApplicantId, setSelectedApplicantId] = useState<string | null>(null);
+  const [detailsDialogOpen, setDetailsDialogOpen] = useState(false);
 
   useEffect(() => {
     loadApplicants();
@@ -274,6 +277,11 @@ function AdminContent() {
     }
   };
 
+  const handleApplicantClick = (applicantId: string) => {
+    setSelectedApplicantId(applicantId);
+    setDetailsDialogOpen(true);
+  };
+
   const filteredApplicants = applicants.filter((applicant) => {
     const matchesSearch =
       applicant.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -433,7 +441,14 @@ function AdminContent() {
                     ) : (
                       filteredApplicants.map((applicant) => (
                         <TableRow key={applicant.id}>
-                          <TableCell className="font-medium">{applicant.full_name}</TableCell>
+                          <TableCell className="font-medium">
+                            <button 
+                              onClick={() => handleApplicantClick(applicant.id)}
+                              className="hover:text-primary hover:underline cursor-pointer transition-colors text-left"
+                            >
+                              {applicant.full_name}
+                            </button>
+                          </TableCell>
                           <TableCell>
                             <Badge 
                               variant={applicant.applicant_type === 'nurse_professional' ? 'default' : 'secondary'}
@@ -536,7 +551,12 @@ function AdminContent() {
                           <TableRow key={applicant.id}>
                             <TableCell className="font-medium sticky left-0 bg-background">
                               <div className="space-y-1">
-                                <div className="font-medium">{applicant.full_name}</div>
+                                <button 
+                                  onClick={() => handleApplicantClick(applicant.id)}
+                                  className="font-medium text-left hover:text-primary hover:underline cursor-pointer transition-colors"
+                                >
+                                  {applicant.full_name}
+                                </button>
                                 <div className="text-xs text-muted-foreground">{applicant.email}</div>
                                 <Badge 
                                   variant={applicant.applicant_type === 'nurse_professional' ? 'default' : 'secondary'}
@@ -616,6 +636,12 @@ function AdminContent() {
           </TabsContent>
         </Tabs>
       </div>
+
+      <ApplicantDetailsDialog
+        applicantId={selectedApplicantId}
+        open={detailsDialogOpen}
+        onOpenChange={setDetailsDialogOpen}
+      />
     </PortalLayout>
   );
 }
