@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { Upload, X, ExternalLink } from 'lucide-react';
+import { Upload, X } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -14,6 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { AnabinGuide } from './AnabinGuide';
 
 interface DocumentUploaderProps {
   documentType: {
@@ -150,30 +151,7 @@ export function DocumentUploader({
           </DialogDescription>
         </DialogHeader>
 
-        {documentType.slug === 'educational_certificates' && (
-          <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-950">
-            <div className="flex items-start gap-3">
-              <div className="text-blue-600 dark:text-blue-400">ℹ️</div>
-              <div className="flex-1 text-sm">
-                <p className="font-medium text-blue-900 dark:text-blue-100 mb-1">
-                  Recognition (Anerkennung) Required
-                </p>
-                <p className="text-blue-700 dark:text-blue-300 mb-2">
-                  Your educational certificates may need official recognition (Anerkennung) in Germany.
-                </p>
-                <a
-                  href="https://www.anerkennung-in-deutschland.de/html/en/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200 font-medium"
-                >
-                  Learn More About Anerkennung
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
+        {documentType.slug === 'educational_certificates' && <AnabinGuide />}
 
         <div className="space-y-4">
           <div
