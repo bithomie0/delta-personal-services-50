@@ -143,7 +143,7 @@ export function DocumentUploader({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent>
+      <DialogContent className="max-h-[85vh] overflow-y-auto w-[95vw] sm:max-w-lg md:max-w-2xl">
         <DialogHeader>
           <DialogTitle>Upload {documentType.name}</DialogTitle>
           <DialogDescription>

@@ -7,7 +7,7 @@ export function AnabinGuide() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-950 space-y-4">
+    <div className="rounded-lg border border-blue-200 bg-blue-50 p-3 sm:p-4 dark:border-blue-800 dark:bg-blue-950 space-y-3 sm:space-y-4">
       {/* Upload Instructions */}
       <div>
         <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
@@ -22,7 +22,7 @@ export function AnabinGuide() {
       </div>
 
       {/* Anerkennung Explanation */}
-      <div className="border-t border-blue-200 dark:border-blue-800 pt-4">
+      <div className="border-t border-blue-200 dark:border-blue-800 pt-3 sm:pt-4">
         <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
           🏆 Why Is Recognition (Anerkennung) Important?
         </h3>
@@ -41,8 +41,27 @@ export function AnabinGuide() {
         </a>
       </div>
 
+      {/* What is Anabin Section */}
+      <div className="border-t border-blue-200 dark:border-blue-800 pt-3 sm:pt-4">
+        <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
+          🔍 What is Anabin?
+        </h3>
+        <p className="text-sm text-blue-700 dark:text-blue-300 mb-3">
+          <strong>Anabin</strong> is Germany's official database for evaluating foreign educational qualifications. 
+          It helps you check whether your university and degree are recognized in Germany.
+        </p>
+        <div className="text-sm text-blue-700 dark:text-blue-300 space-y-2">
+          <p className="font-medium">Why should you check Anabin before uploading?</p>
+          <ul className="list-disc list-inside space-y-1 ml-2">
+            <li>Saves time: Know if your degree is recognized before applying</li>
+            <li>Avoid delays: Ensures your certificates meet German requirements</li>
+            <li>Better preparation: Understand if you need additional recognition steps</li>
+          </ul>
+        </div>
+      </div>
+
       {/* Collapsible Anabin Guide */}
-      <div className="border-t border-blue-200 dark:border-blue-800 pt-4">
+      <div className="border-t border-blue-200 dark:border-blue-800 pt-3 sm:pt-4">
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <div className="space-y-3">
             <h3 className="font-semibold text-blue-900 dark:text-blue-100 flex items-center gap-2">
