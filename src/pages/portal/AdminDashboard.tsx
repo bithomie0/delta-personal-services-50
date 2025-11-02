@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Table,
   TableBody,
@@ -17,7 +18,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Progress } from '@/components/ui/progress';
-import { Loader2, Search, Download, Users, FileCheck, Clock } from 'lucide-react';
+import { Loader2, Search, Download, Users, FileCheck, Clock, CheckCircle2, XCircle } from 'lucide-react';
 
 export default function AdminDashboard() {
   return (
@@ -32,6 +33,8 @@ function AdminContent() {
   const [loading, setLoading] = useState(true);
   const [applicants, setApplicants] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [documentTypes, setDocumentTypes] = useState<any[]>([]);
+  const [documentMatrix, setDocumentMatrix] = useState<any[]>([]);
   const [stats, setStats] = useState({
     total: 0,
     complete: 0,
@@ -40,6 +43,7 @@ function AdminContent() {
 
   useEffect(() => {
     loadApplicants();
+    loadDocumentMatrix();
   }, []);
 
   const loadApplicants = async () => {
@@ -86,6 +90,60 @@ function AdminContent() {
     }
   };
 
+  const loadDocumentMatrix = async () => {
+    try {
+      // Load document types
+      const { data: docTypes } = await supabase
+        .from('delta_document_types')
+        .select('*')
+        .order('display_order', { ascending: true });
+
+      if (docTypes) {
+        setDocumentTypes(docTypes);
+      }
+
+      // Load all applicants with their documents
+      const { data: profiles } = await supabase
+        .from('delta_applicant_profiles')
+        .select('id, full_name, email')
+        .order('created_at', { ascending: false });
+
+      if (profiles && docTypes) {
+        // For each applicant, fetch their submitted documents
+        const matrixData = await Promise.all(
+          profiles.map(async (profile) => {
+            const { data: documents } = await supabase
+              .from('delta_applicant_documents')
+              .select('document_type_id')
+              .eq('applicant_id', profile.id)
+              .eq('upload_status', 'completed');
+
+            const submittedDocTypes = new Set(documents?.map(d => d.document_type_id) || []);
+
+            return {
+              ...profile,
+              documents: docTypes.map(dt => ({
+                type: dt.slug,
+                name: dt.name,
+                submitted: submittedDocTypes.has(dt.id),
+                required: dt.is_required,
+              })),
+            };
+          })
+        );
+
+        setDocumentMatrix(matrixData);
+      }
+    } catch (error: any) {
+      console.error('Error loading document matrix:', error);
+      toast({
+        title: 'Error loading document matrix',
+        description: error.message,
+        variant: 'destructive',
+      });
+    }
+  };
+
   const handleDownloadAll = async (applicantId: string) => {
     try {
       const { data: documents } = await supabase
@@ -102,21 +160,39 @@ function AdminContent() {
         return;
       }
 
-      // Download each document
-      for (const doc of documents) {
+      toast({
+        title: 'Preparing downloads',
+        description: `Preparing ${documents.length} documents...`,
+      });
+
+      // Create signed URLs for all documents
+      const downloadPromises = documents.map(async (doc, index) => {
         const { data, error } = await supabase.storage
           .from('delta_applicant_documents')
           .createSignedUrl(doc.file_path, 900);
 
         if (error) throw error;
 
-        // Open in new tab
-        window.open(data.signedUrl, '_blank');
-      }
+        // Use a small delay between downloads to avoid browser blocking
+        return new Promise<void>((resolve) => {
+          setTimeout(() => {
+            const link = document.createElement('a');
+            link.href = data.signedUrl;
+            link.download = doc.file_name;
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            resolve();
+          }, index * 300);
+        });
+      });
+
+      await Promise.all(downloadPromises);
 
       toast({
         title: 'Download started',
-        description: `Opening ${documents.length} documents in new tabs`,
+        description: `Downloading ${documents.length} documents`,
       });
     } catch (error: any) {
       toast({
@@ -187,86 +263,179 @@ function AdminContent() {
           </Card>
         </div>
 
-        {/* Applicants Table */}
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <CardTitle>All Applicants</CardTitle>
-                <CardDescription>View and manage job applications</CardDescription>
-              </div>
-              <div className="relative w-64">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search applicants..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9"
-                />
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Nationality</TableHead>
-                  <TableHead>Progress</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Registration Date</TableHead>
-                  <TableHead>Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredApplicants.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
-                      No applicants found
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  filteredApplicants.map((applicant) => (
-                    <TableRow key={applicant.id}>
-                      <TableCell className="font-medium">{applicant.full_name}</TableCell>
-                      <TableCell>{applicant.email}</TableCell>
-                      <TableCell>{applicant.nationality}</TableCell>
-                      <TableCell>
-                        <div className="space-y-1 min-w-[120px]">
-                          <Progress value={applicant.progress.progress_percentage} className="h-2" />
-                          <p className="text-xs text-muted-foreground">
-                            {applicant.progress.uploaded_documents}/{applicant.progress.total_documents} docs
-                          </p>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        {applicant.profile_completed ? (
-                          <Badge className="bg-green-500">Complete</Badge>
-                        ) : (
-                          <Badge variant="secondary">Pending</Badge>
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        {new Date(applicant.created_at).toLocaleDateString()}
-                      </TableCell>
-                      <TableCell>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={() => handleDownloadAll(applicant.id)}
-                        >
-                          <Download className="h-4 w-4 mr-2" />
-                          Download All
-                        </Button>
-                      </TableCell>
+        {/* Tabs for different views */}
+        <Tabs defaultValue="applicants" className="w-full">
+          <TabsList>
+            <TabsTrigger value="applicants">All Applicants</TabsTrigger>
+            <TabsTrigger value="matrix">Document Matrix</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="applicants" className="mt-6">
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <CardTitle>All Applicants</CardTitle>
+                    <CardDescription>View and manage job applications</CardDescription>
+                  </div>
+                  <div className="relative w-64">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      placeholder="Search applicants..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-9"
+                    />
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Nationality</TableHead>
+                      <TableHead>Progress</TableHead>
+                      <TableHead>Status</TableHead>
+                      <TableHead>Registration Date</TableHead>
+                      <TableHead>Actions</TableHead>
                     </TableRow>
-                  ))
-                )}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredApplicants.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                          No applicants found
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      filteredApplicants.map((applicant) => (
+                        <TableRow key={applicant.id}>
+                          <TableCell className="font-medium">{applicant.full_name}</TableCell>
+                          <TableCell>{applicant.email}</TableCell>
+                          <TableCell>{applicant.nationality}</TableCell>
+                          <TableCell>
+                            <div className="space-y-1 min-w-[120px]">
+                              <Progress value={applicant.progress.progress_percentage} className="h-2" />
+                              <p className="text-xs text-muted-foreground">
+                                {applicant.progress.uploaded_documents}/{applicant.progress.total_documents} docs
+                              </p>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            {applicant.profile_completed ? (
+                              <Badge className="bg-green-500">Complete</Badge>
+                            ) : (
+                              <Badge variant="secondary">Pending</Badge>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {new Date(applicant.created_at).toLocaleDateString()}
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => handleDownloadAll(applicant.id)}
+                            >
+                              <Download className="h-4 w-4 mr-2" />
+                              Download All
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="matrix" className="mt-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>Document Completion Matrix</CardTitle>
+                <CardDescription>
+                  Overview of submitted documents by applicant
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="min-w-[200px] sticky left-0 bg-background">
+                          Applicant
+                        </TableHead>
+                        {documentTypes.map((docType) => (
+                          <TableHead key={docType.id} className="text-center min-w-[120px]">
+                            <div className="flex flex-col items-center gap-1">
+                              <span className="text-xs font-medium">{docType.name}</span>
+                              {docType.is_required && (
+                                <Badge variant="secondary" className="text-[10px] px-1 py-0">
+                                  Required
+                                </Badge>
+                              )}
+                            </div>
+                          </TableHead>
+                        ))}
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {documentMatrix.length === 0 ? (
+                        <TableRow>
+                          <TableCell
+                            colSpan={documentTypes.length + 1}
+                            className="text-center py-8 text-muted-foreground"
+                          >
+                            No applicants found
+                          </TableCell>
+                        </TableRow>
+                      ) : (
+                        documentMatrix.map((applicant) => (
+                          <TableRow key={applicant.id}>
+                            <TableCell className="font-medium sticky left-0 bg-background">
+                              <div>
+                                <div className="font-medium">{applicant.full_name}</div>
+                                <div className="text-xs text-muted-foreground">{applicant.email}</div>
+                              </div>
+                            </TableCell>
+                            {applicant.documents.map((doc: any, idx: number) => (
+                              <TableCell key={idx} className="text-center">
+                                {doc.submitted ? (
+                                  <CheckCircle2 className="h-5 w-5 mx-auto text-green-500" />
+                                ) : doc.required ? (
+                                  <XCircle className="h-5 w-5 mx-auto text-red-500" />
+                                ) : (
+                                  <XCircle className="h-5 w-5 mx-auto text-muted-foreground/30" />
+                                )}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))
+                      )}
+                    </TableBody>
+                  </Table>
+                </div>
+                <div className="mt-4 flex gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-green-500" />
+                    <span>Submitted</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <XCircle className="h-4 w-4 text-red-500" />
+                    <span>Missing (Required)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <XCircle className="h-4 w-4 text-muted-foreground/30" />
+                    <span>Not Submitted (Optional)</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
       </div>
     </PortalLayout>
   );
