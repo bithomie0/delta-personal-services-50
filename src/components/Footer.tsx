@@ -38,6 +38,9 @@ const Footer = () => {
                 <a href={getLink("contact")} className="text-gray-400 hover:text-white">{t("contact")}</a>
               </li>
               <li>
+                <Link to="/portal/login" className="text-gray-400 hover:text-white">{t("jobPortal")}</Link>
+              </li>
+              <li>
                 <Link to="/imprint" className="text-gray-400 hover:text-white">{t("imprint")}</Link>
               </li>
             </ul>

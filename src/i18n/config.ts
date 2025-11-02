@@ -94,6 +94,7 @@ const resources = {
       "contact": "Contact",
       "get_started": "Get Started",
       "study_nursing": "Study Nursing",
+      "jobPortal": "Job Portal",
 
       // Footer translations
       "quick_links": "Quick Links",
@@ -210,6 +211,7 @@ const resources = {
       "contact": "Kontakt",
       "get_started": "Loslegen",
       "study_nursing": "Pflegestudium",
+      "jobPortal": "Bewerberportal",
 
       // Footer translations
       "quick_links": "Schnellzugriff",
