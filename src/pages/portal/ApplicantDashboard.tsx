@@ -10,6 +10,7 @@ import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CheckCircle2, Loader2 } from 'lucide-react';
+import JSZip from 'jszip';
 
 export default function ApplicantDashboard() {
   return (
@@ -92,13 +93,42 @@ function DashboardContent() {
 
   const handleDownload = async (document: any) => {
     try {
-      const { data, error } = await supabase.storage
+      toast({
+        title: 'Preparing download...',
+        description: 'Creating ZIP file',
+      });
+
+      // Create signed URL
+      const { data: urlData, error: urlError } = await supabase.storage
         .from('delta_applicant_documents')
-        .createSignedUrl(document.file_path, 900); // 15 minutes
+        .createSignedUrl(document.file_path, 900);
 
-      if (error) throw error;
+      if (urlError) throw urlError;
 
-      window.open(data.signedUrl, '_blank');
+      // Fetch the file
+      const response = await fetch(urlData.signedUrl);
+      if (!response.ok) throw new Error('Failed to fetch document');
+      const blob = await response.blob();
+
+      // Create ZIP file
+      const zip = new JSZip();
+      zip.file(document.file_name, blob);
+
+      // Generate and download
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(zipBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${document.file_name.split('.')[0]}.zip`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: 'Download complete',
+        description: 'Your document has been downloaded as a ZIP file',
+      });
     } catch (error: any) {
       toast({
         title: 'Download failed',
