@@ -9,7 +9,8 @@ import { useToast } from '@/hooks/use-toast';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { CheckCircle2, Loader2, GraduationCap, HeartPulse } from 'lucide-react';
 import JSZip from 'jszip';
 
 export default function ApplicantDashboard() {
@@ -182,7 +183,25 @@ function DashboardContent() {
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Welcome Header */}
         <div>
-          <h1 className="text-3xl font-bold">Welcome, {profile?.full_name}!</h1>
+          <div className="flex items-center gap-3 flex-wrap">
+            <h1 className="text-3xl font-bold">Welcome, {profile?.full_name}!</h1>
+            <Badge 
+              variant={profile?.applicant_type === 'nurse_professional' ? 'default' : 'secondary'}
+              className="text-sm px-3 py-1"
+            >
+              {profile?.applicant_type === 'nurse_professional' ? (
+                <>
+                  <HeartPulse className="h-4 w-4 mr-1.5" />
+                  Nurse Professional
+                </>
+              ) : (
+                <>
+                  <GraduationCap className="h-4 w-4 mr-1.5" />
+                  Ausbildung
+                </>
+              )}
+            </Badge>
+          </div>
           <p className="text-muted-foreground mt-2">
             Upload your documents to complete your application
           </p>

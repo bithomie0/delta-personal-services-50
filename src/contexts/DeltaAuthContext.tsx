@@ -16,6 +16,7 @@ interface DeltaAuthContextType {
     phone_number: string;
     date_of_birth: string;
     nationality: string;
+    applicant_type: string;
   }) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
 }
@@ -99,6 +100,7 @@ export function DeltaAuthProvider({ children }: { children: ReactNode }) {
       phone_number: string;
       date_of_birth: string;
       nationality: string;
+      applicant_type: string;
     }
   ) => {
     try {

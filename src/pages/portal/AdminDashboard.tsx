@@ -18,7 +18,14 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Progress } from '@/components/ui/progress';
-import { Loader2, Search, Download, Users, FileCheck, Clock, CheckCircle2, XCircle, Languages, Award } from 'lucide-react';
+import { Loader2, Search, Download, Users, FileCheck, Clock, CheckCircle2, XCircle, Languages, Award, GraduationCap, HeartPulse, Filter } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import JSZip from 'jszip';
 
 export default function AdminDashboard() {
@@ -33,6 +40,7 @@ interface DocumentMatrixData {
   id: string;
   full_name: string;
   email: string;
+  applicant_type: 'ausbildung' | 'nurse_professional';
   documents: Array<{
     type: string;
     name: string;
@@ -48,10 +56,13 @@ function AdminContent() {
   const [loading, setLoading] = useState(true);
   const [applicants, setApplicants] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [typeFilter, setTypeFilter] = useState<string>('all');
   const [documentTypes, setDocumentTypes] = useState<any[]>([]);
   const [documentMatrix, setDocumentMatrix] = useState<DocumentMatrixData[]>([]);
   const [stats, setStats] = useState({
     total: 0,
+    ausbildung: 0,
+    nurse_professional: 0,
     complete: 0,
     pending: 0,
   });
@@ -87,8 +98,13 @@ function AdminContent() {
 
         // Calculate stats
         const complete = applicantsWithProgress.filter((a) => a.profile_completed).length;
+        const ausbildung = applicantsWithProgress.filter((a) => a.applicant_type === 'ausbildung').length;
+        const nurse = applicantsWithProgress.filter((a) => a.applicant_type === 'nurse_professional').length;
+        
         setStats({
           total: applicantsWithProgress.length,
+          ausbildung,
+          nurse_professional: nurse,
           complete,
           pending: applicantsWithProgress.length - complete,
         });
@@ -120,7 +136,7 @@ function AdminContent() {
       // Load all applicants with their documents
       const { data: profiles } = await supabase
         .from('delta_applicant_profiles')
-        .select('id, full_name, email')
+        .select('id, full_name, email, applicant_type')
         .order('created_at', { ascending: false });
 
       if (profiles && docTypes) {
@@ -258,12 +274,18 @@ function AdminContent() {
     }
   };
 
-  const filteredApplicants = applicants.filter(
-    (applicant) =>
+  const filteredApplicants = applicants.filter((applicant) => {
+    const matchesSearch =
       applicant.full_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       applicant.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      applicant.nationality.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+      applicant.nationality.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    const matchesType = 
+      typeFilter === 'all' || 
+      applicant.applicant_type === typeFilter;
+    
+    return matchesSearch && matchesType;
+  });
 
   if (loading) {
     return (
@@ -286,7 +308,7 @@ function AdminContent() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-5">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Applicants</CardTitle>
@@ -299,7 +321,27 @@ function AdminContent() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Complete Applications</CardTitle>
+              <CardTitle className="text-sm font-medium">Ausbildung</CardTitle>
+              <GraduationCap className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stats.ausbildung}</div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Nurse Professionals</CardTitle>
+              <HeartPulse className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{stats.nurse_professional}</div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Complete</CardTitle>
               <FileCheck className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -309,7 +351,7 @@ function AdminContent() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Pending Applications</CardTitle>
+              <CardTitle className="text-sm font-medium">Pending</CardTitle>
               <Clock className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -328,19 +370,42 @@ function AdminContent() {
           <TabsContent value="applicants" className="mt-6">
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between flex-wrap gap-4">
                   <div>
                     <CardTitle>All Applicants</CardTitle>
                     <CardDescription>View and manage job applications</CardDescription>
                   </div>
-                  <div className="relative w-64">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search applicants..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-9"
-                    />
+                  <div className="flex gap-2">
+                    <Select value={typeFilter} onValueChange={setTypeFilter}>
+                      <SelectTrigger className="w-[200px]">
+                        <Filter className="h-4 w-4 mr-2" />
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Types</SelectItem>
+                        <SelectItem value="ausbildung">
+                          <div className="flex items-center gap-2">
+                            <GraduationCap className="h-4 w-4" />
+                            Ausbildung
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="nurse_professional">
+                          <div className="flex items-center gap-2">
+                            <HeartPulse className="h-4 w-4" />
+                            Nurse Professional
+                          </div>
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <div className="relative w-64">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        placeholder="Search applicants..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-9"
+                      />
+                    </div>
                   </div>
                 </div>
               </CardHeader>
@@ -349,6 +414,7 @@ function AdminContent() {
                   <TableHeader>
                     <TableRow>
                       <TableHead>Name</TableHead>
+                      <TableHead>Type</TableHead>
                       <TableHead>Email</TableHead>
                       <TableHead>Nationality</TableHead>
                       <TableHead>Progress</TableHead>
@@ -360,7 +426,7 @@ function AdminContent() {
                   <TableBody>
                     {filteredApplicants.length === 0 ? (
                       <TableRow>
-                        <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                        <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
                           No applicants found
                         </TableCell>
                       </TableRow>
@@ -368,6 +434,24 @@ function AdminContent() {
                       filteredApplicants.map((applicant) => (
                         <TableRow key={applicant.id}>
                           <TableCell className="font-medium">{applicant.full_name}</TableCell>
+                          <TableCell>
+                            <Badge 
+                              variant={applicant.applicant_type === 'nurse_professional' ? 'default' : 'secondary'}
+                              className="whitespace-nowrap"
+                            >
+                              {applicant.applicant_type === 'nurse_professional' ? (
+                                <>
+                                  <HeartPulse className="h-3 w-3 mr-1" />
+                                  Nurse
+                                </>
+                              ) : (
+                                <>
+                                  <GraduationCap className="h-3 w-3 mr-1" />
+                                  Ausbildung
+                                </>
+                              )}
+                            </Badge>
+                          </TableCell>
                           <TableCell>{applicant.email}</TableCell>
                           <TableCell>{applicant.nationality}</TableCell>
                           <TableCell>
@@ -451,9 +535,25 @@ function AdminContent() {
                         documentMatrix.map((applicant) => (
                           <TableRow key={applicant.id}>
                             <TableCell className="font-medium sticky left-0 bg-background">
-                              <div>
+                              <div className="space-y-1">
                                 <div className="font-medium">{applicant.full_name}</div>
                                 <div className="text-xs text-muted-foreground">{applicant.email}</div>
+                                <Badge 
+                                  variant={applicant.applicant_type === 'nurse_professional' ? 'default' : 'secondary'}
+                                  className="text-[10px] px-1.5 py-0"
+                                >
+                                  {applicant.applicant_type === 'nurse_professional' ? (
+                                    <>
+                                      <HeartPulse className="h-2.5 w-2.5 mr-0.5" />
+                                      Nurse
+                                    </>
+                                  ) : (
+                                    <>
+                                      <GraduationCap className="h-2.5 w-2.5 mr-0.5" />
+                                      Ausbildung
+                                    </>
+                                  )}
+                                </Badge>
                               </div>
                             </TableCell>
                             {applicant.documents.map((doc: any, idx: number) => (

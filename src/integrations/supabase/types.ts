@@ -562,6 +562,7 @@ export type Database = {
       }
       delta_applicant_profiles: {
         Row: {
+          applicant_type: Database["public"]["Enums"]["delta_applicant_type"]
           created_at: string
           date_of_birth: string
           email: string
@@ -574,6 +575,7 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          applicant_type?: Database["public"]["Enums"]["delta_applicant_type"]
           created_at?: string
           date_of_birth: string
           email: string
@@ -586,6 +588,7 @@ export type Database = {
           user_id: string
         }
         Update: {
+          applicant_type?: Database["public"]["Enums"]["delta_applicant_type"]
           created_at?: string
           date_of_birth?: string
           email?: string
@@ -2513,6 +2516,7 @@ export type Database = {
     }
     Enums: {
       delta_app_role: "admin" | "applicant"
+      delta_applicant_type: "ausbildung" | "nurse_professional"
       membership_role: "member" | "founding_member" | "admin"
       river_content_format: "markdown" | "html"
       river_post_status: "draft" | "published" | "archived"
@@ -2653,6 +2657,7 @@ export const Constants = {
   public: {
     Enums: {
       delta_app_role: ["admin", "applicant"],
+      delta_applicant_type: ["ausbildung", "nurse_professional"],
       membership_role: ["member", "founding_member", "admin"],
       river_content_format: ["markdown", "html"],
       river_post_status: ["draft", "published", "archived"],

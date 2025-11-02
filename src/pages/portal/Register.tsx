@@ -6,8 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2 } from 'lucide-react';
+import { Loader2, GraduationCap, HeartPulse } from 'lucide-react';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function Register() {
     phone_number: '',
     date_of_birth: '',
     nationality: '',
+    applicant_type: 'ausbildung' as 'ausbildung' | 'nurse_professional',
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -51,6 +53,7 @@ export default function Register() {
       phone_number: formData.phone_number,
       date_of_birth: formData.date_of_birth,
       nationality: formData.nationality,
+      applicant_type: formData.applicant_type,
     });
 
     setLoading(false);
@@ -133,6 +136,40 @@ export default function Register() {
                   value={formData.nationality}
                   onChange={(e) => setFormData({ ...formData, nationality: e.target.value })}
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="applicant_type">Application Type *</Label>
+                <Select
+                  value={formData.applicant_type}
+                  onValueChange={(value: 'ausbildung' | 'nurse_professional') => 
+                    setFormData({ ...formData, applicant_type: value })
+                  }
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select your application type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="ausbildung">
+                      <div className="flex items-center gap-2">
+                        <GraduationCap className="h-4 w-4" />
+                        <div className="flex flex-col items-start">
+                          <span className="font-medium">Ausbildung</span>
+                          <span className="text-xs text-muted-foreground">Apprenticeship/Training positions</span>
+                        </div>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="nurse_professional">
+                      <div className="flex items-center gap-2">
+                        <HeartPulse className="h-4 w-4" />
+                        <div className="flex flex-col items-start">
+                          <span className="font-medium">Nurse Professional</span>
+                          <span className="text-xs text-muted-foreground">Qualified nurse professional positions</span>
+                        </div>
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-2">
